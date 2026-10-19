@@ -1,0 +1,134 @@
+{
+  "version": "2.0.0",
+  "users": [
+    {
+      "id": 1,
+      "full_name": "Master Administrator",
+      "email": "admin@vertexcapitals.ltd",
+      "password_hash": "admin123",
+      "country": "United States",
+      "account_number": "VX-ADMIN-01",
+      "role": "admin",
+      "status": "active",
+      "verification_code": null,
+      "is_verified": 1,
+      "referral_code": "VX-ADMIN",
+      "referred_by": null,
+      "kyc_status": "verified",
+      "created_at": "2026-09-18T18:28:20.776Z",
+      "updated_at": "2026-09-18T18:28:20.796Z"
+    },
+    {
+      "id": 2,
+      "full_name": "David Agent",
+      "email": "agent_test_1789756447694@vertexcapitals.ltd",
+      "password_hash": "password123",
+      "country": "Canada",
+      "account_number": "8217",
+      "role": "user",
+      "status": "active",
+      "verification_code": "990731",
+      "is_verified": 0,
+      "referral_code": "VX-8217",
+      "referred_by": null,
+      "kyc_status": "unverified",
+      "created_at": "2026-09-18T18:34:07.703Z",
+      "updated_at": "2026-09-18T18:34:07.703Z"
+    }
+  ],
+  "wallets": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "exchange_balance": 100000,
+      "otc_investment_balance": 500000,
+      "accrued_profit": 85000,
+      "total_invested": 500000,
+      "updated_at": "2026-09-18T18:28:20.796Z"
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "exchange_balance": 0,
+      "otc_investment_balance": 0,
+      "accrued_profit": 0,
+      "total_invested": 0,
+      "updated_at": "2026-09-18T18:34:07.705Z"
+    }
+  ],
+  "otc_plans": [],
+  "transactions": [
+    {
+      "id": 1,
+      "tx_ref": "TX-INIT-001",
+      "user_id": 1,
+      "user_name": "Master Administrator",
+      "user_email": "admin@vertexcapitals.ltd",
+      "type": "deposit",
+      "amount": 100000,
+      "asset": "USDT (TRC20)",
+      "status": "completed",
+      "destination_address": "Vault System",
+      "tx_hash": "INITIAL-LIQUIDITY-VAULT",
+      "notes": "Initial Platform Reserve Liquidity",
+      "created_at": "2026-09-18T18:28:20.796Z"
+    }
+  ],
+  "company_wallets": [
+    {
+      "id": 1,
+      "symbol": "USDT_TRC20",
+      "name": "Tether USD (TRC20)",
+      "network": "Tron Network (TRC20)",
+      "address": "TXJ9m9P7L8sF3GzQ5K2W1bV8c4Xy7ZaBcd",
+      "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=TXJ9m9P7L8sF3GzQ5K2W1bV8c4Xy7ZaBcd",
+      "is_active": 1
+    },
+    {
+      "id": 2,
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "network": "Bitcoin Network",
+      "address": "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
+      "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
+      "is_active": 1
+    },
+    {
+      "id": 3,
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "network": "Ethereum (ERC20)",
+      "address": "0x71C836642F4F13360565780aef863E75532Eefe7",
+      "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=0x71C836642F4F13360565780aef863E75532Eefe7",
+      "is_active": 1
+    },
+    {
+      "id": 4,
+      "symbol": "USDT_ERC20",
+      "name": "Tether USD (ERC20)",
+      "network": "Ethereum (ERC20)",
+      "address": "0x71C836642F4F13360565780aef863E75532Eefe7",
+      "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=0x71C836642F4F13360565780aef863E75532Eefe7",
+      "is_active": 1
+    },
+    {
+      "id": 5,
+      "symbol": "SOL",
+      "name": "Solana",
+      "network": "Solana Mainnet",
+      "address": "7EYnhQoR9YM3N7UoaKRoA44BW8PYJuCYRnbZKWQnMMz",
+      "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=7EYnhQoR9YM3N7UoaKRoA44BW8PYJuCYRnbZKWQnMMz",
+      "is_active": 1
+    },
+    {
+      "id": 6,
+      "symbol": "BNB",
+      "name": "BNB (BEP20)",
+      "network": "BNB Smart Chain",
+      "address": "0x71C836642F4F13360565780aef863E75532Eefe7",
+      "qr_url": "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=0x71C836642F4F13360565780aef863E75532Eefe7",
+      "is_active": 1
+    }
+  ],
+  "email_logs": []
+}

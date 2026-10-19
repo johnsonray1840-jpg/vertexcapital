@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>
+    (function() {
+      try {
+        const theme = localStorage.getItem('vertexcapitals_theme');
+        if (theme === 'light') document.documentElement.classList.remove('dark');
+        else document.documentElement.classList.add('dark');
+      } catch(e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VertexCapitals - Transactions Ledger</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/d2685dbffe5d4b04.css">
+  <link rel="stylesheet" href="css/theme-engine.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#183EFA',
+            gold: '#F59E0B',
+            dark: '#070A11',
+            cardBg: '#0C121E',
+            cardBorder: '#1E293B'
+          }
+        }
+      }
+    }
+  </script>
+  <script src="js/nav-fix.js"></script>
+  <script src="js/app-store.js"></script>
+</head>
+<body class="bg-slate-50 dark:bg-[#070a11] text-slate-800 dark:text-gray-100 min-h-screen flex flex-col font-sans antialiased selection:bg-primary selection:text-white">
+  
+  <!-- Header -->
+  <header class="bg-white/90 dark:bg-[#0c121e]/90 backdrop-blur-md border-b border-slate-200 dark:border-gray-800/80 px-6 py-4 flex justify-between items-center sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <button onclick="VertexApp.toggleSideNav()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 hover:border-primary/50 flex items-center justify-center text-slate-700 dark:text-gray-300 hover:text-primary transition-all shadow-sm" title="Toggle Navigation">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <a href="dashboard.html" class="flex items-center gap-2 text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <span class="text-sm font-semibold">Dashboard</span>
+      </a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <!-- Theme Switcher Toggle Button -->
+      <button onclick="VertexApp.toggleTheme()" class="theme-toggle-btn" title="Toggle Theme (Light / Dark Mode)">
+        <!-- Sun icon (shown in Dark mode) -->
+        <svg class="sun-icon w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <!-- Moon icon (shown in Light mode) -->
+        <svg class="moon-icon w-4 h-4 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+
+      <a href="index.html">
+        <img src="images/navbarlogo.svg" alt="VertexCapitals Logo" class="h-7 brand-logo-adaptive">
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Ledger Container -->
+  <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div>
+        <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-primary/10 text-primary border border-primary/20 uppercase tracking-wider">Cryptographic Ledger</span>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-2 tracking-tight">Transactions History</h1>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-gray-400 mt-1">Live audit records of all crypto deposits, OTC returns, capital allocations, and payouts.</p>
+      </div>
+
+      <div class="flex gap-2">
+        <a href="deposit.html" class="px-4 py-2.5 bg-primary hover:bg-[#1332c9] text-white font-extrabold text-xs rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center gap-1.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span>Deposit</span>
+        </a>
+        <a href="withdrawal.html" class="px-4 py-2.5 bg-white dark:bg-[#0c121e] hover:bg-slate-100 dark:hover:bg-gray-800 text-slate-700 dark:text-gray-200 border border-slate-200 dark:border-gray-800 font-bold text-xs rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          <span>Withdraw</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap gap-2">
+      <button onclick="filterTxs('all')" id="btn-filter-all" class="px-4 py-2 rounded-xl text-xs font-bold transition-all bg-primary text-white shadow-md shadow-primary/20">All Records</button>
+      <button onclick="filterTxs('deposit')" id="btn-filter-deposit" class="px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white shadow-sm">Deposits</button>
+      <button onclick="filterTxs('withdrawal')" id="btn-filter-withdrawal" class="px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white shadow-sm">Withdrawals</button>
+      <button onclick="filterTxs('otc_profit')" id="btn-filter-otc_profit" class="px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white shadow-sm">OTC Returns</button>
+      <button onclick="filterTxs('invest_otc')" id="btn-filter-invest_otc" class="px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white shadow-sm">OTC Allocations</button>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl overflow-hidden shadow-md dark:shadow-2xl">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead>
+            <tr class="bg-slate-50 dark:bg-[#070a11] text-slate-500 dark:text-gray-400 uppercase tracking-wider border-b border-slate-200 dark:border-gray-800">
+              <th class="py-4 px-6">Reference</th>
+              <th class="py-4 px-6">Type</th>
+              <th class="py-4 px-6">Asset</th>
+              <th class="py-4 px-6">Amount</th>
+              <th class="py-4 px-6">Status</th>
+              <th class="py-4 px-6">Hash / Destination</th>
+              <th class="py-4 px-6 text-right">Date</th>
+            </tr>
+          </thead>
+          <tbody id="transactions-ledger-body" class="divide-y divide-slate-100 dark:divide-gray-800/60 font-medium">
+            <tr>
+              <td colspan="7" class="py-8 text-center text-slate-400 dark:text-gray-500">Loading audit ledger...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let activeFilter = 'all';
+    let allTransactions = [];
+
+    function filterTxs(category) {
+      activeFilter = category;
+      ['all', 'deposit', 'withdrawal', 'otc_profit', 'invest_otc'].forEach(cat => {
+        const btn = document.getElementById(`btn-filter-${cat}`);
+        if (btn) {
+          if (cat === category) {
+            btn.className = 'px-4 py-2 rounded-xl text-xs font-bold transition-all bg-primary text-white shadow-md shadow-primary/20';
+          } else {
+            btn.className = 'px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white shadow-sm';
+          }
+        }
+      });
+      renderLedger();
+    }
+
+    async function initTransactions() {
+      if (!VertexApp.currentUser) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const summary = await VertexApp.getSummary();
+      if (summary && summary.transactions) {
+        allTransactions = summary.transactions;
+      }
+      renderLedger();
+    }
+
+    function renderLedger() {
+      const tbody = document.getElementById('transactions-ledger-body');
+      let filtered = allTransactions;
+
+      if (activeFilter !== 'all') {
+        filtered = allTransactions.filter(t => {
+          if (activeFilter === 'deposit') return t.type === 'deposit';
+          if (activeFilter === 'withdrawal') return t.type === 'withdrawal';
+          if (activeFilter === 'otc_profit') return t.type === 'otc_profit' || t.type === 'profit';
+          if (activeFilter === 'invest_otc') return t.type === 'invest_otc' || t.type === 'investment' || t.type === 'otc_investment';
+          return t.type === activeFilter;
+        });
+      }
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="py-12 text-center text-slate-400 dark:text-gray-500">
+              No transactions recorded for this category.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(tx => {
+        const isCredit = tx.type === 'deposit' || tx.type === 'otc_profit' || tx.type === 'profit';
+        const amountPrefix = isCredit ? '+' : '-';
+        const amountColor = isCredit ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400';
+        
+        let statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 uppercase">Pending</span>`;
+        if (tx.status === 'completed') {
+          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 uppercase">Completed</span>`;
+        } else if (tx.status === 'rejected') {
+          statusBadge = `<span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30 uppercase">Cancelled</span>`;
+        }
+
+        let typeLabel = (tx.type || 'Transaction').replace(/_/g, ' ');
+        if (tx.type === 'invest_otc') typeLabel = 'OTC Allocation';
+        if (tx.type === 'otc_profit') typeLabel = 'OTC Return';
+
+        const dateStr = new Date(tx.created_at || Date.now()).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+        return `
+          <tr class="hover:bg-slate-50/80 dark:hover:bg-gray-800/30 transition-colors">
+            <td class="py-4 px-6 font-bold text-slate-700 dark:text-gray-200">${tx.tx_ref}</td>
+            <td class="py-4 px-6 uppercase text-[11px] font-semibold text-primary">${typeLabel}</td>
+            <td class="py-4 px-6 text-slate-600 dark:text-gray-300 font-medium">${tx.asset}</td>
+            <td class="py-4 px-6 font-bold ${amountColor}">${amountPrefix}$${parseFloat(tx.amount).toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+            <td class="py-4 px-6">${statusBadge}</td>
+            <td class="py-4 px-6 text-[11px] text-slate-400 dark:text-gray-400 truncate max-w-xs">${tx.tx_hash || tx.destination_address || 'Internal'}</td>
+            <td class="py-4 px-6 text-right text-slate-400 dark:text-gray-400 ">${dateStr}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    window.addEventListener('DOMContentLoaded', initTransactions);
+  </script>
+</body>
+</html>

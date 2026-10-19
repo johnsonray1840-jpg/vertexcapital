@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VertexCapitals - Profile & Security</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <!-- Theme Early Initializer to prevent flash of wrong theme (FOUC) -->
+  <script>
+    (function() {
+      try {
+        const theme = localStorage.getItem('vertexcapitals_theme');
+        if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      } catch(e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="css/d2685dbffe5d4b04.css">
+  <link rel="stylesheet" href="css/theme-engine.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#183EFA',
+            gold: '#F59E0B',
+            dark: '#070A11',
+            cardBg: '#0C121E',
+            cardBorder: '#1E293B'
+          }
+        }
+      }
+    }
+  </script>
+  <script src="js/nav-fix.js"></script>
+  <script src="js/app-store.js"></script>
+</head>
+<body class="theme-bg theme-text min-h-screen flex flex-col font-sans antialiased selection:bg-primary selection:text-white transition-colors duration-200">
+  
+  <!-- Header -->
+  <header class="bg-white/90 dark:bg-[#0c121e]/90 backdrop-blur-md border-b border-slate-200 dark:border-gray-800/80 px-6 py-4 flex justify-between items-center sticky top-0 z-40 transition-colors duration-200">
+    <div class="flex items-center gap-3">
+      <button onclick="VertexApp.toggleSideNav()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 hover:border-primary/50 flex items-center justify-center text-slate-700 dark:text-gray-300 hover:text-primary transition-all shadow-sm" title="Toggle Navigation">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <a href="dashboard.html" class="flex items-center gap-2 text-slate-600 dark:text-gray-400 hover:text-primary dark:hover:text-white transition-colors">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <span class="text-sm font-semibold">Dashboard</span>
+      </a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <!-- Theme Switcher Button -->
+      <button onclick="VertexApp.toggleTheme()" class="theme-toggle-btn" title="Toggle Theme (Light / Dark Mode)">
+        <svg class="sun-icon w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="moon-icon w-4 h-4 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+
+      <a href="index.html">
+        <img src="images/navbarlogo.svg" alt="VertexCapitals Logo" class="h-7 brand-logo-adaptive">
+      </a>
+    </div>
+  </header>
+
+  <!-- Profile Settings Container -->
+  <main class="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+    <div>
+      <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-primary/10 text-primary border border-primary/20 uppercase tracking-wider">Account Credentials & KYC</span>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-2 tracking-tight">Profile & Security Settings</h1>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 mt-1">Manage your identity verification, password credentials, and partner affiliate link.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Left Column: User Summary & KYC -->
+      <div class="space-y-6">
+        <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl p-6 text-center space-y-4 shadow-xl">
+          <div class="w-20 h-20 rounded-full bg-primary mx-auto flex items-center justify-center text-white text-2xl font-extrabold shadow-lg shadow-primary/25" id="profile-avatar-initials">
+            VX
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white" id="profile-name">Investor Name</h3>
+            <p class="text-xs text-slate-500 dark:text-gray-400 " id="profile-email">investor@example.com</p>
+          </div>
+          <div class="pt-2 border-t border-slate-200 dark:border-gray-800">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center justify-center gap-1.5" id="profile-kyc-badge">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Verified Portfolio
+            </span>
+          </div>
+        </div>
+
+        <!-- Referral Link Card -->
+        <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl p-6 space-y-3 shadow-xl">
+          <h4 class="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span>Partner Referral Link</span>
+          </h4>
+          <p class="text-[11px] text-slate-600 dark:text-gray-400">Earn 5% affiliate commission on all OTC capital allocated by referred accounts.</p>
+          <div class="bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 p-2.5 rounded-xl text-xs text-primary dark:text-blue-200 break-all select-all font-semibold" id="profile-referral-link">
+            https://vertexcapitals.ltd/register.html?ref=VX-8776
+          </div>
+          <button onclick="copyRefLink()" class="w-full py-2.5 bg-primary hover:bg-[#1332c9] text-white font-bold text-xs rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span id="ref-copy-text">Copy Partner Link</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Forms -->
+      <div class="lg:col-span-2 space-y-6">
+        
+        <!-- Personal Information Form -->
+        <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+          <h3 class="text-md font-bold text-slate-900 dark:text-white pb-2 border-b border-slate-200 dark:border-gray-800">Account Identity</h3>
+          <form onsubmit="handleSaveProfile(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-slate-600 dark:text-gray-400 mb-1">Full Legal Name</label>
+                <input type="text" id="info-name" required class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-primary">
+              </div>
+              <div>
+                <label class="block text-xs text-slate-600 dark:text-gray-400 mb-1">Email Address</label>
+                <input type="email" id="info-email" disabled class="w-full bg-slate-100 dark:bg-[#070a11] border border-slate-200 dark:border-gray-800/60 rounded-xl px-4 py-2.5 text-xs text-slate-400 dark:text-gray-500 cursor-not-allowed ">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-slate-600 dark:text-gray-400 mb-1">Account Number</label>
+                <input type="text" id="info-account-number" disabled class="w-full bg-slate-100 dark:bg-[#070a11] border border-slate-200 dark:border-gray-800/60 rounded-xl px-4 py-2.5 text-xs text-primary dark:text-blue-300 cursor-not-allowed font-bold">
+              </div>
+              <div>
+                <label class="block text-xs text-slate-600 dark:text-gray-400 mb-1">Country</label>
+                <input type="text" id="info-country" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-primary">
+              </div>
+            </div>
+
+            <button type="submit" class="py-2.5 px-6 bg-primary hover:bg-[#1332c9] text-white text-xs font-bold rounded-xl shadow-md shadow-primary/20 transition-all">
+              Save Account Information
+            </button>
+          </form>
+        </div>
+
+        <!-- Password Change Form -->
+        <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+          <h3 class="text-md font-bold text-slate-900 dark:text-white pb-2 border-b border-slate-200 dark:border-gray-800">Security Credentials</h3>
+          <form onsubmit="handleChangePassword(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs text-slate-600 dark:text-gray-400 mb-1">New Password</label>
+                <input type="password" id="pwd-new" required minlength="6" placeholder="••••••••" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-primary">
+              </div>
+              <div>
+                <label class="block text-xs text-slate-600 dark:text-gray-400 mb-1">Confirm New Password</label>
+                <input type="password" id="pwd-confirm" required minlength="6" placeholder="••••••••" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-primary">
+              </div>
+            </div>
+
+            <button type="submit" class="py-2.5 px-6 bg-slate-100 dark:bg-[#101726] hover:bg-slate-200 dark:hover:bg-gray-800 text-slate-800 dark:text-white border border-slate-200 dark:border-gray-800 text-xs font-bold rounded-xl transition-all shadow-sm">
+              Update Password
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!VertexApp.currentUser) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const user = VertexApp.currentUser;
+      const initials = (user.full_name || 'User').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+
+      document.getElementById('profile-avatar-initials').innerText = initials;
+      document.getElementById('profile-name').innerText = user.full_name;
+      document.getElementById('profile-email').innerText = user.email;
+      document.getElementById('info-name').value = user.full_name;
+      document.getElementById('info-email').value = user.email;
+      document.getElementById('info-account-number').value = user.account_number || '8776';
+      document.getElementById('info-country').value = user.country || 'United States';
+
+      const origin = window.location.origin.includes('http') ? window.location.origin : 'https://vertexcapitals.ltd';
+      document.getElementById('profile-referral-link').innerText = `${origin}/register.html?ref=${user.referral_code || 'VX-' + user.account_number}`;
+    });
+
+    function copyRefLink() {
+      const link = document.getElementById('profile-referral-link').innerText;
+      navigator.clipboard.writeText(link);
+      const btn = document.getElementById('ref-copy-text');
+      btn.innerText = 'Link Copied!';
+      setTimeout(() => {
+        btn.innerText = 'Copy Partner Link';
+      }, 2500);
+      VertexApp.showToast('Partner referral link copied.', 'success');
+    }
+
+    function handleSaveProfile(e) {
+      e.preventDefault();
+      const newName = document.getElementById('info-name').value;
+      const newCountry = document.getElementById('info-country').value;
+
+      if (VertexApp.currentUser) {
+        VertexApp.currentUser.full_name = newName;
+        VertexApp.currentUser.country = newCountry;
+        VertexApp.setAuthUser(VertexApp.currentUser);
+        document.getElementById('profile-name').innerText = newName;
+        VertexApp.showToast('Profile information updated.', 'success');
+      }
+    }
+
+    function handleChangePassword(e) {
+      e.preventDefault();
+      const p1 = document.getElementById('pwd-new').value;
+      const p2 = document.getElementById('pwd-confirm').value;
+
+      if (p1 !== p2) {
+        VertexApp.showToast('Passwords do not match.', 'error');
+        return;
+      }
+
+      document.getElementById('pwd-new').value = '';
+      document.getElementById('pwd-confirm').value = '';
+      VertexApp.showToast('Password credentials updated successfully.', 'success');
+    }
+  </script>
+</body>
+</html>

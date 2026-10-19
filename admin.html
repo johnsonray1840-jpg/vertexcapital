@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VertexCapitals - Executive Institutional Admin Center</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/d2685dbffe5d4b04.css">
+  <link rel="stylesheet" href="css/theme-engine.css">
+  <script>
+    // Inline Theme Pre-initializer to eliminate FOUC
+    (function() {
+      try {
+        const theme = localStorage.getItem('vertexcapitals_theme');
+        if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      } catch(e) {}
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#183EFA',
+            gold: '#F59E0B',
+            dark: '#070A11',
+            cardBg: '#0C121E',
+            cardBorder: '#1E293B'
+          }
+        }
+      }
+    }
+  </script>
+  <script src="js/nav-fix.js"></script>
+  <script src="js/app-store.js"></script>
+</head>
+<body class="bg-[#f8fafc] dark:bg-[#070a11] text-slate-800 dark:text-gray-100 min-h-screen flex flex-col font-sans antialiased selection:bg-primary selection:text-white transition-colors duration-300">
+  
+  <!-- Admin Top Master Header -->
+  <header class="bg-white/85 dark:bg-[#0c121e]/90 backdrop-blur-md border-b border-slate-200/80 dark:border-gray-800/80 px-4 sm:px-8 py-3.5 flex justify-between items-center sticky top-0 z-40 transition-colors shadow-sm dark:shadow-none">
+    <div class="flex items-center gap-3">
+      <a href="admin.html" class="flex items-center gap-2">
+        <img src="images/navbarlogo.svg" alt="VertexCapitals Logo" class="h-7 sm:h-8 brand-logo-adaptive">
+      </a>
+      <div class="hidden sm:flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-gray-800">
+        <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-primary/10 text-primary border border-primary/20 uppercase tracking-wider">Master Control Desk</span>
+        <span class="flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Live Node Sync
+        </span>
+      </div>
+    </div>
+
+    <!-- Right Actions -->
+    <div class="flex items-center gap-2.5 sm:gap-3">
+      <!-- Theme Switcher Button -->
+      <button onclick="VertexApp.toggleTheme()" class="theme-toggle-btn shadow-sm" title="Toggle Theme">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle></svg>
+      </button>
+
+      <a href="dashboard.html" class="px-3.5 py-2 bg-slate-100 dark:bg-[#101726] hover:bg-slate-200 dark:hover:bg-gray-800 text-xs font-bold text-slate-700 dark:text-gray-200 border border-slate-200 dark:border-gray-800 rounded-xl transition-all hidden md:flex items-center gap-1.5">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span>Investor Portal View</span>
+      </a>
+
+      <div class="flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-gray-800">
+        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-black text-xs shadow-md shadow-primary/20">
+          AD
+        </div>
+        <div class="hidden lg:block text-left">
+          <p class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Master Administrator</p>
+          <p class="text-[10px] text-primary font-semibold uppercase">Superadmin Tier</p>
+        </div>
+      </div>
+
+      <button onclick="VertexApp.adminLogout()" class="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-xs font-bold text-rose-600 dark:text-rose-400 border border-rose-500/30 rounded-xl transition-all">
+        Sign Out
+      </button>
+    </div>
+  </header>
+
+  <!-- Admin Main Workspace -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+    
+    <!-- Top Executive KPI Stats Row -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 min-w-0">
+      <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 p-5 rounded-3xl space-y-2 shadow-md dark:shadow-xl min-w-0 overflow-hidden">
+        <div class="flex justify-between items-center text-[11px] text-slate-500 dark:text-gray-400 font-semibold uppercase tracking-wider">
+          <span class="truncate">Registered Investors</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-500 flex-shrink-0"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white truncate" id="stat-investors-count">0</h3>
+        <p class="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0"></span> Live Accounts
+        </p>
+      </div>
+
+      <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 p-5 rounded-3xl space-y-2 shadow-md dark:shadow-xl min-w-0 overflow-hidden">
+        <div class="flex justify-between items-center text-[11px] text-slate-500 dark:text-gray-400 font-semibold uppercase tracking-wider min-w-0">
+          <span class="truncate">Total Platform AUM</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-500 flex-shrink-0 ml-1"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M6 12h12"/></svg>
+        </div>
+        <h3 class="text-lg sm:text-xl font-extrabold text-amber-500 dark:text-amber-400 truncate" id="stat-managed-assets">$0.00</h3>
+        <p class="text-[10px] text-slate-400 dark:text-gray-400 font-medium truncate">Liquid Vault + Active OTC</p>
+      </div>
+
+      <div onclick="switchAdminTab('deposits')" class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 hover:border-emerald-500/50 p-5 rounded-3xl space-y-2 shadow-md dark:shadow-xl cursor-pointer transition-all">
+        <div class="flex justify-between items-center text-[11px] text-slate-500 dark:text-gray-400 font-semibold uppercase tracking-wider">
+          <span>Pending Deposits</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-500"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 " id="stat-pending-deposits">0</h3>
+        <p class="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">Awaiting Settlement Review</p>
+      </div>
+
+      <div onclick="switchAdminTab('withdrawals')" class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 hover:border-purple-500/50 p-5 rounded-3xl space-y-2 shadow-md dark:shadow-xl cursor-pointer transition-all">
+        <div class="flex justify-between items-center text-[11px] text-slate-500 dark:text-gray-400 font-semibold uppercase tracking-wider">
+          <span>Pending Payouts</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-500"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-purple-600 dark:text-purple-400 " id="stat-pending-withdrawals">0</h3>
+        <p class="text-[10px] text-purple-600 dark:text-purple-400 font-medium">Ready for Blockchain Broadcast</p>
+      </div>
+
+      <div onclick="switchAdminTab('otc-plans')" class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 hover:border-blue-500/50 p-5 rounded-3xl space-y-2 shadow-md dark:shadow-xl cursor-pointer transition-all">
+        <div class="flex justify-between items-center text-[11px] text-slate-500 dark:text-gray-400 font-semibold uppercase tracking-wider">
+          <span>Active OTC Tranches</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-500"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400 " id="stat-active-otc-count">0</h3>
+        <p class="text-[10px] text-blue-600 dark:text-blue-400 font-medium">Weekly Yield Contracts</p>
+      </div>
+    </div>
+
+    <!-- Admin Master Navigation Tabs -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-200 dark:border-gray-800 pb-3 overflow-x-auto">
+      <button onclick="switchAdminTab('users')" id="tab-btn-users" class="px-4 py-2.5 rounded-2xl text-xs font-bold transition-all bg-primary text-white flex items-center gap-1.5 shadow-md shadow-primary/20">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+        <span>Investors & Accounts</span>
+      </button>
+
+      <button onclick="switchAdminTab('deposits')" id="tab-btn-deposits" class="px-4 py-2.5 rounded-2xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 shadow-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>Deposit Queue</span>
+      </button>
+
+      <button onclick="switchAdminTab('withdrawals')" id="tab-btn-withdrawals" class="px-4 py-2.5 rounded-2xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 shadow-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        <span>Withdrawal Queue</span>
+      </button>
+
+      <button onclick="switchAdminTab('otc-plans')" id="tab-btn-otc-plans" class="px-4 py-2.5 rounded-2xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 shadow-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>OTC Contracts Desk</span>
+      </button>
+
+      <button onclick="switchAdminTab('wallets')" id="tab-btn-wallets" class="px-4 py-2.5 rounded-2xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 shadow-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
+        <span>Company Custody Wallets</span>
+      </button>
+
+      <button onclick="switchAdminTab('ledger')" id="tab-btn-ledger" class="px-4 py-2.5 rounded-2xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 shadow-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Master Ledger</span>
+      </button>
+
+      <button onclick="switchAdminTab('emails')" id="tab-btn-emails" class="px-4 py-2.5 rounded-2xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 shadow-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Resend Email Dispatcher</span>
+      </button>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- TAB 1: INVESTORS & ACCOUNTS (FULL CRUD) -->
+    <!-- ========================================================== -->
+    <section id="tab-content-users" class="space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h3 class="font-bold text-lg text-slate-900 dark:text-white">Registered Institutional Investors</h3>
+          <p class="text-xs text-slate-500 dark:text-gray-400">Live investor database accounts, portfolios, KYC verifications, and balance management.</p>
+        </div>
+        <div class="flex items-center gap-2 w-full sm:w-auto flex-wrap">
+          <input type="text" id="user-search-input" onkeyup="filterUsersTable()" placeholder="Search name, email, account ID…" class="bg-white dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-primary w-full sm:w-56 shadow-sm">
+          <button onclick="openCreateUserModal()" class="px-4 py-2.5 bg-primary hover:bg-blue-700 text-white font-black text-xs rounded-xl shadow-lg shadow-primary/20 whitespace-nowrap flex items-center gap-1.5 transition-all">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span>+ Add Investor</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bulk Action Toolbar (hidden until checkboxes are selected) -->
+      <div id="bulk-action-bar" class="hidden items-center gap-3 bg-rose-500/10 border border-rose-500/30 rounded-2xl px-5 py-3">
+        <span class="text-rose-400 font-bold text-xs" id="bulk-selected-count">0 selected</span>
+        <span class="text-gray-600">|</span>
+        <button onclick="bulkDeleteSelected()" class="px-4 py-1.5 bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 transition-all">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+          Delete Selected
+        </button>
+        <button onclick="clearUserSelection()" class="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold text-xs rounded-xl transition-all">
+          Cancel
+        </button>
+      </div>
+
+      <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl overflow-hidden shadow-md dark:shadow-2xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="bg-slate-50 dark:bg-[#070a11] text-slate-500 dark:text-gray-400 uppercase tracking-wider border-b border-slate-200 dark:border-gray-800">
+                <th class="py-4 px-4 w-10">
+                  <input type="checkbox" id="select-all-users" onchange="toggleSelectAllUsers(this)" class="w-3.5 h-3.5 rounded accent-rose-500 cursor-pointer">
+                </th>
+                <th class="py-4 px-4">Account ID</th>
+                <th class="py-4 px-4">Investor Name</th>
+                <th class="py-4 px-4">Email Address</th>
+                <th class="py-4 px-4">KYC</th>
+                <th class="py-4 px-4">Status</th>
+                <th class="py-4 px-4">Liquid Wallet</th>
+                <th class="py-4 px-4">OTC Capital</th>
+                <th class="py-4 px-4">Accrued Return</th>
+                <th class="py-4 px-4 text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users-table-body" class="divide-y divide-slate-100 dark:divide-gray-800/60 font-medium">
+              <!-- Rendered Dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- DELETE CONFIRMATION MODAL                                   -->
+    <!-- ============================================================ -->
+    <div id="delete-user-modal" class="hidden fixed inset-0 bg-slate-900/60 dark:bg-[#070a11]/90 backdrop-blur-xl z-[9999] flex items-center justify-center p-4">
+      <div class="bg-white dark:bg-[#0c121e] border border-rose-500/30 rounded-3xl p-8 w-full max-w-md shadow-2xl shadow-rose-500/10">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 rounded-2xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-base" id="delete-modal-title">Delete Investor Account</h3>
+            <p class="text-[11px] text-rose-500 dark:text-rose-400 font-semibold">This action is permanent and cannot be undone.</p>
+          </div>
+        </div>
+
+        <p class="text-sm text-slate-600 dark:text-gray-300 mb-4" id="delete-modal-body">
+          You are about to permanently delete this investor account.
+        </p>
+
+        <div class="bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-2xl p-4 mb-6 space-y-1.5 text-xs text-slate-500 dark:text-gray-400">
+          <p class="flex items-center gap-2"><span class="text-rose-500 dark:text-rose-400">✕</span> Account profile & credentials</p>
+          <p class="flex items-center gap-2"><span class="text-rose-500 dark:text-rose-400">✕</span> Wallet & all balance records</p>
+          <p class="flex items-center gap-2"><span class="text-rose-500 dark:text-rose-400">✕</span> All transaction history</p>
+          <p class="flex items-center gap-2"><span class="text-rose-500 dark:text-rose-400">✕</span> Active & past OTC investment plans</p>
+        </div>
+
+        <!-- Type-to-confirm field for single deletes -->
+        <div id="delete-confirm-field" class="mb-5">
+          <label class="block text-xs font-semibold text-slate-700 dark:text-gray-400 mb-1.5">Type <span class="text-slate-900 dark:text-white font-bold" id="delete-confirm-word">DELETE</span> to confirm:</label>
+          <input type="text" id="delete-confirm-input" placeholder="Type DELETE here…"
+            class="w-full bg-slate-50 dark:bg-[#070a11] border border-slate-200 dark:border-gray-800 focus:border-rose-500 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white text-sm placeholder-slate-400 dark:placeholder-gray-600 focus:outline-none transition-colors"
+            oninput="checkDeleteConfirmInput()">
+        </div>
+
+        <div class="flex gap-3">
+          <button onclick="closeDeleteModal()" class="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-slate-700 dark:text-white font-bold text-xs rounded-xl transition-all">
+            Cancel
+          </button>
+          <button id="confirm-delete-btn" onclick="executeDelete()" disabled
+            class="flex-1 py-2.5 bg-rose-500 hover:bg-rose-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-1.5">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+            Permanently Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- TAB 2: DEPOSIT QUEUE (FULL CRUD) -->
+    <!-- ========================================================== -->
+    <section id="tab-content-deposits" class="hidden space-y-4">
+      <div class="flex justify-between items-center">
+        <div>
+          <h3 class="font-bold text-lg text-slate-900 dark:text-white">Cryptocurrency Deposit Approval Queue</h3>
+          <p class="text-xs text-slate-500 dark:text-gray-400">Review on-chain TXID transactions submitted by investors to credit their Liquid Exchange Wallet.</p>
+        </div>
+        <button onclick="openManualTxModal('deposit')" class="px-4 py-2 bg-white dark:bg-[#101726] hover:bg-slate-50 dark:hover:bg-gray-800 text-xs font-bold text-amber-600 dark:text-amber-400 border border-slate-200 dark:border-gray-800 rounded-xl transition-all shadow-sm">
+          + Inject Manual Deposit
+        </button>
+      </div>
+
+      <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl overflow-hidden shadow-md dark:shadow-2xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="bg-slate-50 dark:bg-[#070a11] text-slate-500 dark:text-gray-400 uppercase tracking-wider border-b border-slate-200 dark:border-gray-800">
+                <th class="py-4 px-6">Reference</th>
+                <th class="py-4 px-6">Investor</th>
+                <th class="py-4 px-6">Asset</th>
+                <th class="py-4 px-6">Amount (USD)</th>
+                <th class="py-4 px-6">TXID / Proof</th>
+                <th class="py-4 px-6">Status</th>
+                <th class="py-4 px-6 text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-deposits-table-body" class="divide-y divide-slate-100 dark:divide-gray-800/60 font-medium">
+              <!-- Rendered Dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- TAB 3: WITHDRAWAL QUEUE (FULL CRUD) -->
+    <!-- ========================================================== -->
+    <section id="tab-content-withdrawals" class="hidden space-y-4">
+      <div class="flex justify-between items-center">
+        <div>
+          <h3 class="font-bold text-lg text-slate-900 dark:text-white">Withdrawal & Payout Approval Desk</h3>
+          <p class="text-xs text-slate-500 dark:text-gray-400">Authorize cryptocurrency payouts, record blockchain TXID hashes, or decline with refund.</p>
+        </div>
+        <button onclick="openManualTxModal('withdrawal')" class="px-4 py-2 bg-white dark:bg-[#101726] hover:bg-slate-50 dark:hover:bg-gray-800 text-xs font-bold text-rose-600 dark:text-rose-400 border border-slate-200 dark:border-gray-800 rounded-xl transition-all shadow-sm">
+          + Record External Payout
+        </button>
+      </div>
+
+      <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl overflow-hidden shadow-md dark:shadow-2xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="bg-slate-50 dark:bg-[#070a11] text-slate-500 dark:text-gray-400 uppercase tracking-wider border-b border-slate-200 dark:border-gray-800">
+                <th class="py-4 px-6">Reference</th>
+                <th class="py-4 px-6">Investor</th>
+                <th class="py-4 px-6">Asset</th>
+                <th class="py-4 px-6">Amount (USD)</th>
+                <th class="py-4 px-6">Destination Wallet</th>
+                <th class="py-4 px-6">Status</th>
+                <th class="py-4 px-6 text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-withdrawals-table-body" class="divide-y divide-slate-100 dark:divide-gray-800/60 font-medium">
+              <!-- Rendered Dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- TAB 4: OTC CONTRACTS DESK (FULL CRUD) -->
+    <!-- ========================================================== -->
+    <section id="tab-content-otc-plans" class="hidden space-y-4">
+      <div class="flex justify-between items-center">
+        <div>
+          <h3 class="font-bold text-lg text-slate-900 dark:text-white">Active OTC Investment Contracts</h3>
+          <p class="text-xs text-slate-500 dark:text-gray-400">Manage institutional yield contracts, terms, weekly return percentages, and maturity settlements.</p>
+        </div>
+        <button onclick="openCreateOTCPlanModal()" class="px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs rounded-xl shadow-lg transition-all flex items-center gap-1.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>+ Allocate OTC Contract</span>
+        </button>
+      </div>
+
+      <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl overflow-hidden shadow-md dark:shadow-2xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="bg-slate-50 dark:bg-[#070a11] text-slate-500 dark:text-gray-400 uppercase tracking-wider border-b border-slate-200 dark:border-gray-800">
+                <th class="py-4 px-6">Contract ID</th>
+                <th class="py-4 px-6">Investor</th>
+                <th class="py-4 px-6">Tranche Tier</th>
+                <th class="py-4 px-6">Principal Allocated</th>
+                <th class="py-4 px-6">Target ROI</th>
+                <th class="py-4 px-6">Lifecycle Progress</th>
+                <th class="py-4 px-6">Status</th>
+                <th class="py-4 px-6 text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-otc-plans-table-body" class="divide-y divide-slate-100 dark:divide-gray-800/60 font-medium">
+              <!-- Rendered Dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- TAB 5: COMPANY CUSTODY WALLETS (FULL CRUD) -->
+    <!-- ========================================================== -->
+    <section id="tab-content-wallets" class="hidden space-y-4">
+      <div class="flex justify-between items-center">
+        <div>
+          <h3 class="font-bold text-lg text-slate-900 dark:text-white">Company Deposit Custody Wallets</h3>
+          <p class="text-xs text-slate-500 dark:text-gray-400">Configure official platform deposit addresses and auto-generate QR codes for client deposits.</p>
+        </div>
+        <button onclick="openWalletModal()" class="px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-xs rounded-xl shadow-lg transition-all flex items-center gap-1.5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span>+ Add Custody Wallet</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="admin-wallets-grid">
+        <!-- Rendered Dynamically -->
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- TAB 6: MASTER AUDIT LEDGER (FULL CRUD) -->
+    <!-- ========================================================== -->
+    <section id="tab-content-ledger" class="hidden space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h3 class="font-bold text-lg text-slate-900 dark:text-white">Platform Master Audit Ledger</h3>
+          <p class="text-xs text-slate-500 dark:text-gray-400">Immutable chronological record of all capital movements, yields, deposits, and payouts.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="openManualTxModal('deposit')" class="px-3.5 py-2 bg-white dark:bg-[#101726] border border-slate-200 dark:border-gray-800 hover:border-amber-500 text-xs font-bold text-slate-700 dark:text-gray-200 rounded-xl transition-all shadow-sm">
+            + Manual Entry
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl overflow-hidden shadow-md dark:shadow-2xl">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="bg-slate-50 dark:bg-[#070a11] text-slate-500 dark:text-gray-400 uppercase tracking-wider border-b border-slate-200 dark:border-gray-800">
+                <th class="py-4 px-6">Reference</th>
+                <th class="py-4 px-6">Investor</th>
+                <th class="py-4 px-6">Type</th>
+                <th class="py-4 px-6">Asset / Tranche</th>
+                <th class="py-4 px-6">Amount</th>
+                <th class="py-4 px-6">Status</th>
+                <th class="py-4 px-6">Timestamp</th>
+                <th class="py-4 px-6 text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-ledger-table-body" class="divide-y divide-slate-100 dark:divide-gray-800/60 font-medium">
+              <!-- Rendered Dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- TAB 7: RESEND EMAIL DISPATCHER & AUDIT LOGS -->
+    <!-- ========================================================== -->
+    <section id="tab-content-emails" class="hidden space-y-8">
+      <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl p-6 sm:p-8 space-y-6 shadow-md dark:shadow-2xl">
+        <div class="pb-3 border-b border-slate-200 dark:border-gray-800 flex justify-between items-center">
+          <div>
+            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Live Resend Email Engine & Announcement Broadcast</h3>
+            <p class="text-xs text-slate-500 dark:text-gray-400">Dispatch branded HTML communications to verified investor email inboxes via Resend API.</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 uppercase">Resend API Active</span>
+        </div>
+
+        <form id="admin-email-form" onsubmit="handleSendEmail(event)" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 dark:text-gray-300 mb-1">Target Recipient Email</label>
+              <input type="text" id="email-recipient" placeholder="e.g. investor@domain.com or select broadcast" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-amber-500">
+            </div>
+
+            <div class="flex items-center gap-2 pt-6">
+              <input type="checkbox" id="email-broadcast" onchange="toggleBroadcastCheckbox(this)" class="rounded bg-slate-100 dark:bg-gray-800 border-slate-300 dark:border-gray-700 text-amber-500 focus:ring-0">
+              <label for="email-broadcast" class="text-xs font-bold text-amber-600 dark:text-amber-400 cursor-pointer">Broadcast Announcement to ALL Registered Investors</label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-gray-300 mb-1">Email Subject Line</label>
+            <input type="text" id="email-subject" required placeholder="Official Notice from VertexCapitals" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-3 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-amber-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 dark:text-gray-300 mb-1">Email Announcement Body</label>
+            <textarea id="email-body" rows="5" required placeholder="Type your institutional communication here..." class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl p-4 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-amber-500 font-sans"></textarea>
+          </div>
+
+          <button type="submit" id="btn-broadcast-submit" class="py-3.5 px-8 bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 font-extrabold text-xs rounded-xl shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2">
+            <span>Dispatch Live Email via Resend</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl p-6 sm:p-8 space-y-4 shadow-md dark:shadow-2xl">
+        <div class="flex justify-between items-center border-b border-slate-200 dark:border-gray-800 pb-3">
+          <h3 class="font-bold text-base text-slate-900 dark:text-white">Dispatched Email Audit Log</h3>
+          <button onclick="clearEmailLogs()" class="text-xs text-rose-500 dark:text-rose-400 hover:text-rose-600 dark:hover:text-rose-300 font-semibold">Clear Logs</button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="bg-slate-50 dark:bg-[#070a11] text-slate-500 dark:text-gray-400 uppercase tracking-wider border-b border-slate-200 dark:border-gray-800">
+                <th class="py-3 px-4">Recipient</th>
+                <th class="py-3 px-4">Subject</th>
+                <th class="py-3 px-4">Event Type</th>
+                <th class="py-3 px-4 text-right">Timestamp</th>
+              </tr>
+            </thead>
+            <tbody id="admin-email-logs-body" class="divide-y divide-slate-100 dark:divide-gray-800/60 font-medium">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================== -->
+  <!-- MODAL 1: CREATE INVESTOR ACCOUNT -->
+  <!-- ========================================================== -->
+  <div id="create-user-modal" class="hidden fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-5 shadow-2xl">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-gray-800">
+        <h3 class="font-bold text-slate-900 dark:text-white text-base">Register New Investor Account</h3>
+        <button onclick="closeModal('create-user-modal')" class="text-slate-400 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white">✕</button>
+      </div>
+
+      <form onsubmit="handleCreateUserSubmit(event)" class="space-y-4 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Full Legal Name</label>
+            <input type="text" id="new-user-name" required placeholder="e.g. Katherine Pierce" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Email Address</label>
+            <input type="email" id="new-user-email" required placeholder="katherine@investments.com" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Password</label>
+            <input type="password" id="new-user-password" required placeholder="••••••••" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Country</label>
+            <input type="text" id="new-user-country" value="United States" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Initial Liquid Balance ($)</label>
+            <input type="number" id="new-user-exchange" step="0.01" value="0.00" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-amber-600 dark:text-amber-400 font-bold focus:outline-none focus:border-amber-500">
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Initial OTC Capital ($)</label>
+            <input type="number" id="new-user-otc" step="0.01" value="0.00" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-emerald-600 dark:text-emerald-400 font-bold focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">KYC Status</label>
+            <select id="new-user-kyc" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+              <option value="verified">Verified</option>
+              <option value="pending">Pending</option>
+              <option value="unverified">Unverified</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Account Role</label>
+            <select id="new-user-role" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+              <option value="user">Investor (Standard)</option>
+              <option value="admin">Administrator</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-xs rounded-xl shadow-lg shadow-amber-500/20 transition-all mt-2">
+          Create Account & Synchronize Wallet
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================== -->
+  <!-- MODAL 2: EDIT INVESTOR PROFILE & KYC -->
+  <!-- ========================================================== -->
+  <div id="edit-user-modal" class="hidden fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-gray-800">
+        <h3 class="font-bold text-slate-900 dark:text-white text-base">Edit Investor Profile & KYC</h3>
+        <button onclick="closeModal('edit-user-modal')" class="text-slate-400 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white">✕</button>
+      </div>
+
+      <form onsubmit="handleUpdateUserSubmit(event)" class="space-y-4 text-xs">
+        <input type="hidden" id="edit-profile-user-id">
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Full Legal Name</label>
+          <input type="text" id="edit-profile-name" required class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Email Address</label>
+          <input type="email" id="edit-profile-email" required class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">KYC Status</label>
+            <select id="edit-profile-kyc" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+              <option value="verified">Verified</option>
+              <option value="pending">Pending</option>
+              <option value="unverified">Unverified</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Account Status</label>
+            <select id="edit-profile-status" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+              <option value="active">Active</option>
+              <option value="suspended">Suspended</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Country</label>
+          <input type="text" id="edit-profile-country" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-primary">
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-primary hover:bg-[#1332c9] text-white font-bold text-xs rounded-xl shadow-lg shadow-primary/20 transition-all mt-2">
+          Save Profile Changes
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================== -->
+  <!-- MODAL 3: EDIT INVESTOR BALANCES -->
+  <!-- ========================================================== -->
+  <div id="balance-modal" class="hidden fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-gray-800">
+        <h3 class="font-bold text-slate-900 dark:text-white text-base">Adjust Investor Balances</h3>
+        <button onclick="closeModal('balance-modal')" class="text-slate-400 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white">✕</button>
+      </div>
+
+      <input type="hidden" id="edit-user-id">
+      <div class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-500 dark:text-gray-400 mb-1">Investor Name</label>
+          <input type="text" id="edit-user-name" disabled class="w-full bg-slate-100 dark:bg-[#070a11] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-slate-800 dark:text-gray-300 font-bold">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Liquid Exchange Wallet Balance ($)</label>
+          <input type="number" id="edit-exchange-balance" step="0.01" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-blue-600 dark:text-blue-300 font-bold focus:outline-none focus:border-primary">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Active OTC Capital ($)</label>
+          <input type="number" id="edit-otc-balance" step="0.01" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-emerald-600 dark:text-emerald-400 font-bold focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Accrued Return Profit ($)</label>
+          <input type="number" id="edit-profit-balance" step="0.01" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-emerald-600 dark:text-emerald-400 font-bold focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <button onclick="saveUserBalances()" class="w-full py-3 bg-primary hover:bg-[#1332c9] text-white font-bold text-xs rounded-xl shadow-lg shadow-primary/20 transition-all">
+          Save Live Balance Changes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================== -->
+  <!-- MODAL 4: CREDIT WEEKLY OTC YIELD -->
+  <!-- ========================================================== -->
+  <div id="credit-profit-modal" class="hidden fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-gray-800">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base">Credit Weekly OTC Yield</h3>
+        </div>
+        <button onclick="closeModal('credit-profit-modal')" class="text-slate-400 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white">✕</button>
+      </div>
+
+      <input type="hidden" id="profit-user-id">
+      <div class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-500 dark:text-gray-400 mb-1">Investor Name</label>
+          <input type="text" id="profit-user-name" disabled class="w-full bg-slate-100 dark:bg-[#070a11] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-slate-800 dark:text-gray-300 font-bold">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Active OTC Capital</label>
+          <div class="text-lg font-bold text-emerald-600 dark:text-emerald-400" id="profit-active-otc">$0.00</div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Weekly Profit Return to Credit ($)</label>
+          <input type="number" id="profit-credit-amount" step="0.01" min="1" placeholder="e.g. 375.00" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-emerald-600 dark:text-emerald-400 font-bold focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Audit Ledger Memo / Note</label>
+          <input type="text" id="profit-credit-note" value="Institutional Weekly OTC Yield Settled" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-xs text-slate-800 dark:text-gray-200 focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <button onclick="submitCreditProfit()" id="btn-submit-profit" class="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-xs rounded-xl shadow-lg shadow-emerald-500/20 transition-all">
+          Credit Profit & Dispatch Resend Email
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================== -->
+  <!-- MODAL 5: ALLOCATE OTC CONTRACT -->
+  <!-- ========================================================== -->
+  <div id="create-otc-modal" class="hidden fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-gray-800">
+        <h3 class="font-bold text-slate-900 dark:text-white text-base">Assign Institutional OTC Contract</h3>
+        <button onclick="closeModal('create-otc-modal')" class="text-slate-400 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white">✕</button>
+      </div>
+
+      <form onsubmit="handleCreateOTCPlanSubmit(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Target Investor</label>
+          <select id="otc-target-user" required class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+            <!-- Populated Dynamically -->
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Tranche Tier</label>
+          <select id="otc-target-tranche" onchange="updateTrancheFormDefaults(this.value)" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+            <option value="Executive Multi-Asset Tranche">Executive Multi-Asset Tranche (7.5% / wk • 30 Days)</option>
+            <option value="Starter Institutional Tranche">Starter Institutional Tranche (5.0% / wk • 30 Days)</option>
+            <option value="Prime Sovereign Whale Tranche">Prime Sovereign Whale Tranche (10.0% / wk • 60 Days)</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Capital Amount ($)</label>
+            <input type="number" id="otc-target-amount" step="50" min="500" value="5000" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-amber-600 dark:text-amber-400 font-bold focus:outline-none focus:border-amber-500">
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Weekly ROI (%)</label>
+            <input type="number" id="otc-target-roi" step="0.1" value="7.5" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-emerald-600 dark:text-emerald-400 font-bold focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Term Duration (Days)</label>
+          <input type="number" id="otc-target-duration" value="30" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-black text-xs rounded-xl shadow-lg transition-all mt-2">
+          Allocate & Activate Contract
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================== -->
+  <!-- MODAL 6: ADD / EDIT CUSTODY WALLET -->
+  <!-- ========================================================== -->
+  <div id="wallet-modal" class="hidden fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-gray-800">
+        <h3 class="font-bold text-slate-900 dark:text-white text-base" id="wallet-modal-title">Add Official Deposit Custody Wallet</h3>
+        <button onclick="closeModal('wallet-modal')" class="text-slate-400 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white">✕</button>
+      </div>
+
+      <form id="form-save-wallet" onsubmit="handleSaveWalletSubmit(event)" class="space-y-4 text-xs">
+        <input type="hidden" id="wallet-orig-symbol" value="">
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Asset Symbol (e.g. USDT_TRC20, BTC, ETH, SOL)</label>
+          <input type="text" id="wallet-symbol" required placeholder="e.g. USDT_TRC20, BTC, ETH, SOL" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Display Asset Name</label>
+          <input type="text" id="wallet-name" required placeholder="e.g. Tether USD (TRC20)" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Blockchain Network</label>
+          <input type="text" id="wallet-network" required placeholder="e.g. Tron Network (TRC20)" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Deposit Wallet Address</label>
+          <input type="text" id="wallet-address" required placeholder="Paste official receiving address..." class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-primary">
+        </div>
+
+        <div class="flex items-center gap-2 pt-1">
+          <input type="checkbox" id="wallet-is-active" checked class="w-4 h-4 rounded accent-primary">
+          <label for="wallet-is-active" class="font-semibold text-slate-700 dark:text-gray-300 cursor-pointer">Active Deposit Asset (Visible to investors in deposit gateway)</label>
+        </div>
+
+        <button type="submit" id="btn-wallet-save" class="w-full py-3 bg-primary hover:bg-[#1332c9] text-white font-black text-xs rounded-xl shadow-lg shadow-primary/20 transition-all mt-2 flex items-center justify-center gap-2">
+          <span>Save Custody Wallet</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================== -->
+  <!-- MODAL 7: MANUAL TRANSACTION INJECTION -->
+  <!-- ========================================================== -->
+  <div id="manual-tx-modal" class="hidden fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-gray-800">
+        <h3 class="font-bold text-slate-900 dark:text-white text-base">Inject Manual Ledger Transaction</h3>
+        <button onclick="closeModal('manual-tx-modal')" class="text-slate-400 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white">✕</button>
+      </div>
+
+      <form onsubmit="handleManualTxSubmit(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Target Investor</label>
+          <select id="manual-tx-user" required class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+            <!-- Populated Dynamically -->
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Transaction Type</label>
+            <select id="manual-tx-type" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+              <option value="deposit">Deposit Credit</option>
+              <option value="withdrawal">Withdrawal Debit</option>
+              <option value="otc_profit">OTC Profit Return</option>
+              <option value="invest_otc">OTC Capital Allocation</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Amount (USD)</label>
+            <input type="number" id="manual-tx-amount" step="0.01" min="1" required placeholder="5000.00" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-amber-600 dark:text-amber-400 font-bold focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Asset Description</label>
+          <input type="text" id="manual-tx-asset" value="USDT (TRC20)" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 dark:text-gray-300 mb-1">Ledger Memo / Note</label>
+          <input type="text" id="manual-tx-note" value="Administrative Ledger Adjustment" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500">
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-xs rounded-xl shadow-lg transition-all mt-2">
+          Inject Transaction & Update Balances
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ADMIN AUTHENTICATION GATE MODAL                             -->
+  <!-- ============================================================ -->
+  <div id="admin-login-gate" class="fixed inset-0 bg-slate-900/80 dark:bg-[#070a11] z-[99999] flex items-center justify-center p-4" style="display:none !important;">
+    <div class="w-full max-w-md">
+      <!-- Logo -->
+      <div class="flex flex-col items-center mb-8">
+        <img src="images/navbarlogo.svg" alt="VertexCapitals" class="h-9 brand-logo-adaptive mb-4">
+        <div class="px-3 py-1 rounded-full text-[11px] font-extrabold bg-primary/10 text-primary border border-primary/20 uppercase tracking-wider mb-2">Administration Access</div>
+        <p class="text-slate-500 dark:text-gray-500 text-xs text-center">Restricted area. Authorised personnel only.</p>
+      </div>
+
+      <!-- Login Card -->
+      <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl p-8 shadow-2xl">
+        <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-1">Admin Sign In</h2>
+        <p class="text-slate-500 dark:text-gray-500 text-xs mb-6">Enter your administrator credentials to continue.</p>
+
+        <div id="admin-login-error" class="hidden mb-4 p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-rose-500 dark:text-rose-400 text-xs font-medium"></div>
+
+        <form id="admin-login-form" onsubmit="handleAdminLogin(event)">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-gray-400 mb-1.5 uppercase tracking-wider">Email Address</label>
+              <input type="email" id="admin-email-input" required autocomplete="off"
+                placeholder="admin@vertexcapitals.ltd"
+                class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 focus:border-primary rounded-xl px-4 py-3 text-slate-900 dark:text-white text-sm placeholder-slate-400 dark:placeholder-gray-600 focus:outline-none transition-colors">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-gray-400 mb-1.5 uppercase tracking-wider">Password</label>
+              <div class="relative">
+                <input type="password" id="admin-password-input" required autocomplete="off"
+                  placeholder="Enter admin password"
+                  class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 focus:border-primary rounded-xl px-4 py-3 text-slate-900 dark:text-white text-sm placeholder-slate-400 dark:placeholder-gray-600 focus:outline-none transition-colors pr-12">
+                <button type="button" onclick="toggleAdminPasswordVisibility()" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-gray-500 hover:text-slate-600 dark:hover:text-gray-300 transition-colors">
+                  <svg id="pw-eye-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" id="admin-login-btn"
+            class="w-full mt-6 py-3.5 bg-primary hover:bg-blue-700 text-white font-bold text-sm rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Authenticate & Access Control Desk
+          </button>
+        </form>
+
+        <div class="mt-6 pt-5 border-t border-slate-200 dark:border-gray-800/60 flex items-center justify-between">
+          <a href="index.html" class="text-xs text-slate-500 dark:text-gray-500 hover:text-slate-800 dark:hover:text-gray-300 transition-colors">← Back to Site</a>
+          <span class="text-[10px] text-slate-400 dark:text-gray-600">Session expires after 8 hours</span>
+        </div>
+      </div>
+
+      <!-- Security Note -->
+      <p class="text-center text-[10px] text-slate-400 dark:text-gray-600 mt-4">All admin actions are logged and audited. Unauthorized access attempts are recorded.</p>
+    </div>
+  </div>
+
+  <!-- SESSION EXPIRY BANNER (shown when token nears expiry) -->
+  <div id="admin-session-banner" class="hidden fixed top-0 left-0 right-0 z-[9999] bg-amber-500/90 backdrop-blur-sm text-amber-950 text-xs font-bold py-2 px-4 flex items-center justify-between">
+    <span>⚠️ Admin session expiring soon. <span id="session-timer-text"></span></span>
+    <button onclick="refreshAdminSession()" class="underline hover:no-underline">Refresh Session</button>
+  </div>
+
+  <!-- JAVASCRIPT MASTER CLIENT CONTROLLER -->
+  <script>
+    let adminOverviewData = null;
+    let sessionTimerInterval = null;
+
+    // ==========================================
+    // ADMIN AUTH GATE
+    // ==========================================
+    async function checkAdminAuth() {
+      // Show login gate if no valid local token
+      const token = VertexApp.getAdminToken();
+      if (!token) {
+        showAdminLoginGate();
+        return false;
+      }
+
+      // Verify token is still valid on server
+      const verify = await VertexApp.adminVerifyToken();
+      if (!verify || !verify.success) {
+        showAdminLoginGate('Your admin session has expired. Please log in again.');
+        return false;
+      }
+
+      // Start session countdown
+      startSessionCountdown(verify.session.expiresAt);
+      return true;
+    }
+
+    function showAdminLoginGate(errorMsg) {
+      const gate = document.getElementById('admin-login-gate');
+      gate.style.removeProperty('display');
+      gate.style.display = 'flex';
+      if (errorMsg) {
+        showAdminLoginError(errorMsg);
+      }
+    }
+
+    function hideAdminLoginGate() {
+      const gate = document.getElementById('admin-login-gate');
+      gate.style.display = 'none';
+    }
+
+    function showAdminLoginError(msg) {
+      const el = document.getElementById('admin-login-error');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+    }
+
+    function hideAdminLoginError() {
+      document.getElementById('admin-login-error').classList.add('hidden');
+    }
+
+    function toggleAdminPasswordVisibility() {
+      const input = document.getElementById('admin-password-input');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      hideAdminLoginError();
+
+      const email = document.getElementById('admin-email-input').value.trim();
+      const password = document.getElementById('admin-password-input').value;
+      const btn = document.getElementById('admin-login-btn');
+
+      if (!email || !password) {
+        showAdminLoginError('Both email and password are required.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = `<svg class="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Authenticating...`;
+
+      const result = await VertexApp.adminLogin(email, password);
+
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Authenticate & Access Control Desk`;
+
+      if (result.success) {
+        hideAdminLoginGate();
+        startSessionCountdown(result.expiresAt);
+        await initAdmin();
+      } else {
+        showAdminLoginError(result.message || 'Authentication failed. Check your credentials.');
+        document.getElementById('admin-password-input').value = '';
+        document.getElementById('admin-password-input').focus();
+      }
+    }
+
+    function startSessionCountdown(expiresAt) {
+      if (sessionTimerInterval) clearInterval(sessionTimerInterval);
+      const banner = document.getElementById('admin-session-banner');
+      const timerText = document.getElementById('session-timer-text');
+      const WARN_THRESHOLD_MS = 30 * 60 * 1000; // show warning at 30 mins remaining
+
+      sessionTimerInterval = setInterval(() => {
+        const remaining = expiresAt - Date.now();
+        if (remaining <= 0) {
+          clearInterval(sessionTimerInterval);
+          banner.classList.add('hidden');
+          VertexApp.clearAdminToken();
+          showAdminLoginGate('Session expired. Please log in again.');
+          return;
+        }
+        if (remaining <= WARN_THRESHOLD_MS) {
+          const mins = Math.floor(remaining / 60000);
+          const secs = Math.floor((remaining % 60000) / 1000);
+          timerText.textContent = `${mins}m ${secs}s remaining.`;
+          banner.classList.remove('hidden');
+        } else {
+          banner.classList.add('hidden');
+        }
+      }, 5000);
+    }
+
+    async function refreshAdminSession() {
+      const result = await VertexApp.adminLogin(
+        VertexApp.currentUser ? VertexApp.currentUser.email : '',
+        '' // Can't refresh without re-entering password — force re-login
+      );
+      showAdminLoginGate('Please re-enter your password to refresh your session.');
+    }
+
+    async function initAdmin() {
+      const data = await VertexApp.getAdminOverview();
+      if (!data || !data.success) {
+        // 401 = session expired — show login gate
+        if (data && data.message && data.message.toLowerCase().includes('unauthorized')) {
+          showAdminLoginGate('Session expired or invalid. Please authenticate again.');
+        } else {
+          VertexApp.showToast('Failed to connect to backend server. Is it running?', 'error');
+        }
+        return;
+      }
+
+      adminOverviewData = data;
+      renderStats();
+      renderUsers();
+      renderDeposits();
+      renderWithdrawals();
+      renderOTCPlans();
+      renderWallets();
+      renderMasterLedger();
+      renderEmailLogs();
+      populateUserDropdowns();
+    }
+
+    function renderStats() {
+      const users = adminOverviewData.users.filter(u => u.role !== 'admin');
+      document.getElementById('stat-investors-count').innerText = users.length;
+
+      let totalAUM = 0;
+      adminOverviewData.wallets.forEach(w => {
+        const u = adminOverviewData.users.find(usr => usr.id === w.user_id);
+        if (u && u.role !== 'admin') {
+          totalAUM += (parseFloat(w.exchange_balance || 0) + parseFloat(w.otc_investment_balance || 0) + parseFloat(w.accrued_profit || 0));
+        }
+      });
+      document.getElementById('stat-managed-assets').innerText = '$' + totalAUM.toLocaleString(undefined, { minimumFractionDigits: 2 });
+
+      const txs = adminOverviewData.transactions || [];
+      const pendDeps = txs.filter(t => t.type === 'deposit' && t.status === 'pending').length;
+      document.getElementById('stat-pending-deposits').innerText = pendDeps;
+
+      const pendWds = txs.filter(t => t.type === 'withdrawal' && t.status === 'pending').length;
+      document.getElementById('stat-pending-withdrawals').innerText = pendWds;
+
+      const otcPlans = adminOverviewData.otcPlans ? adminOverviewData.otcPlans.filter(p => p.status === 'active') : [];
+      document.getElementById('stat-active-otc-count').innerText = otcPlans.length;
+    }
+
+    function renderUsers() {
+      const tbody = document.getElementById('admin-users-table-body');
+      tbody.innerHTML = '';
+      clearUserSelection();
+      const users = adminOverviewData.users.filter(u => u.role !== 'admin');
+
+      if (users.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="10" class="py-12 text-center text-slate-400 dark:text-gray-500">No registered investors yet. Click "+ Add Investor" above to create one.</td></tr>';
+        return;
+      }
+
+      users.forEach(u => {
+        const wallet = adminOverviewData.wallets.find(w => w.user_id === u.id) || { exchange_balance: 0, otc_investment_balance: 0, accrued_profit: 0 };
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/80 dark:hover:bg-gray-800/20 transition-colors group';
+        tr.dataset.userId = u.id;
+
+        const kycBadge = u.kyc_status === 'verified'
+          ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">KYC ✓</span>'
+          : u.kyc_status === 'pending'
+          ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30">PENDING</span>'
+          : '<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-slate-100 dark:bg-gray-800 text-slate-500 dark:text-gray-500 border border-slate-200 dark:border-gray-700">UNVERIFIED</span>';
+
+        const statusBadge = u.status === 'active'
+          ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">Active</span>'
+          : u.status === 'banned'
+          ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">Banned</span>'
+          : '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-gray-800 text-slate-500 dark:text-gray-400 border border-slate-200 dark:border-gray-700">Inactive</span>';
+
+        tr.innerHTML = `
+          <td class="py-3.5 px-4">
+            <input type="checkbox" class="user-row-checkbox w-3.5 h-3.5 rounded accent-rose-500 cursor-pointer" data-user-id="${u.id}" data-user-name="${escapeQuote(u.full_name)}" onchange="updateBulkBar()">
+          </td>
+          <td class="py-3.5 px-4 font-bold text-primary text-[11px]">${u.account_number || 'VX-' + u.id}</td>
+          <td class="py-3.5 px-4">
+            <div class="font-bold text-slate-900 dark:text-white">${u.full_name}</div>
+            <div class="text-[10px] text-slate-400 dark:text-gray-500">${u.country || 'Global'}</div>
+          </td>
+          <td class="py-3.5 px-4 text-slate-500 dark:text-gray-400">${u.email}</td>
+          <td class="py-3.5 px-4">${kycBadge}</td>
+          <td class="py-3.5 px-4">${statusBadge}</td>
+          <td class="py-3.5 px-4 font-bold text-blue-600 dark:text-blue-300">$${parseFloat(wallet.exchange_balance).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+          <td class="py-3.5 px-4 font-bold text-emerald-600 dark:text-emerald-400">$${parseFloat(wallet.otc_investment_balance).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+          <td class="py-3.5 px-4 font-bold text-emerald-600 dark:text-emerald-400">+$${parseFloat(wallet.accrued_profit).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+          <td class="py-3.5 px-4 text-center">
+            <div class="flex items-center justify-center gap-1 flex-nowrap">
+              <button onclick="openCreditProfitModal(${u.id}, '${escapeQuote(u.full_name)}', ${wallet.otc_investment_balance})" class="px-2 py-1 bg-emerald-500/10 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/20 dark:border-emerald-500/30 rounded-lg text-[10px] font-bold transition-all" title="Credit Yield">+Yield</button>
+              <button onclick="openBalanceModal(${u.id}, '${escapeQuote(u.full_name)}', ${wallet.exchange_balance}, ${wallet.otc_investment_balance}, ${wallet.accrued_profit})" class="px-2 py-1 bg-primary/10 dark:bg-primary/15 text-primary hover:bg-primary/20 border border-primary/20 dark:border-primary/30 rounded-lg text-[10px] font-bold transition-all" title="Edit Balances">Balance</button>
+              <button onclick="openEditUserModal(${u.id}, '${escapeQuote(u.full_name)}', '${u.email}', '${u.country}', '${u.kyc_status}', '${u.status}')" class="px-2 py-1 bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-200 border border-slate-200 dark:border-gray-700 rounded-lg text-[10px] font-bold transition-all" title="Edit Profile">Edit</button>
+              <button onclick="deleteUser(${u.id}, '${escapeQuote(u.full_name)}')" class="px-2 py-1 bg-rose-500/10 dark:bg-rose-500/15 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20 border border-rose-500/20 dark:border-rose-500/30 rounded-lg text-[10px] font-bold transition-all flex items-center gap-1" title="Delete Account">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+                Del
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ==========================================
+    // USER DELETE CRUD FUNCTIONS
+    // ==========================================
+    let _deleteTarget = null; // { mode: 'single'|'bulk', userId, userName, userIds }
+
+    function updateBulkBar() {
+      const checked = document.querySelectorAll('.user-row-checkbox:checked');
+      const bar = document.getElementById('bulk-action-bar');
+      const count = document.getElementById('bulk-selected-count');
+      const selectAll = document.getElementById('select-all-users');
+      const total = document.querySelectorAll('.user-row-checkbox').length;
+
+      count.textContent = `${checked.length} account${checked.length !== 1 ? 's' : ''} selected`;
+
+      if (checked.length > 0) {
+        bar.classList.remove('hidden');
+        bar.classList.add('flex');
+      } else {
+        bar.classList.add('hidden');
+        bar.classList.remove('flex');
+      }
+
+      // Update select-all state
+      if (selectAll) {
+        selectAll.indeterminate = checked.length > 0 && checked.length < total;
+        selectAll.checked = total > 0 && checked.length === total;
+      }
+    }
+
+    function toggleSelectAllUsers(masterCb) {
+      document.querySelectorAll('.user-row-checkbox').forEach(cb => {
+        cb.checked = masterCb.checked;
+      });
+      updateBulkBar();
+    }
+
+    function clearUserSelection() {
+      document.querySelectorAll('.user-row-checkbox').forEach(cb => cb.checked = false);
+      const selectAll = document.getElementById('select-all-users');
+      if (selectAll) { selectAll.checked = false; selectAll.indeterminate = false; }
+      const bar = document.getElementById('bulk-action-bar');
+      if (bar) { bar.classList.add('hidden'); bar.classList.remove('flex'); }
+    }
+
+    function deleteUser(userId, userName) {
+      _deleteTarget = { mode: 'single', userId, userName };
+      document.getElementById('delete-modal-title').textContent = 'Delete Investor Account';
+      document.getElementById('delete-modal-body').innerHTML =
+        `You are about to permanently delete <strong class="text-slate-900 dark:text-white">${userName}</strong> and all their associated data from the database.`;
+      document.getElementById('delete-confirm-field').classList.remove('hidden');
+      document.getElementById('delete-confirm-input').value = '';
+      document.getElementById('confirm-delete-btn').disabled = true;
+      document.getElementById('delete-user-modal').classList.remove('hidden');
+      setTimeout(() => document.getElementById('delete-confirm-input').focus(), 100);
+    }
+
+    function bulkDeleteSelected() {
+      const checked = document.querySelectorAll('.user-row-checkbox:checked');
+      if (checked.length === 0) return;
+
+      const ids = Array.from(checked).map(cb => parseInt(cb.dataset.userId));
+      const names = Array.from(checked).map(cb => cb.dataset.userName);
+
+      _deleteTarget = { mode: 'bulk', userIds: ids, names };
+      document.getElementById('delete-modal-title').textContent = `Delete ${ids.length} Investor Account${ids.length > 1 ? 's' : ''}`;
+      document.getElementById('delete-modal-body').innerHTML =
+        `You are about to permanently delete <strong class="text-slate-900 dark:text-white">${ids.length} investor account${ids.length > 1 ? 's' : ''}</strong> and all their data from the database.` +
+        (names.length <= 5 ? `<br><br><span class="text-slate-500 dark:text-gray-400 text-xs">${names.join(', ')}</span>` : '');
+
+      // For bulk: hide the type-to-confirm field, enable button directly
+      document.getElementById('delete-confirm-field').classList.add('hidden');
+      document.getElementById('confirm-delete-btn').disabled = false;
+      document.getElementById('delete-user-modal').classList.remove('hidden');
+    }
+
+    function checkDeleteConfirmInput() {
+      const val = document.getElementById('delete-confirm-input').value.trim();
+      document.getElementById('confirm-delete-btn').disabled = val !== 'DELETE';
+    }
+
+    function closeDeleteModal() {
+      document.getElementById('delete-user-modal').classList.add('hidden');
+      document.getElementById('delete-confirm-input').value = '';
+      document.getElementById('confirm-delete-btn').disabled = true;
+      _deleteTarget = null;
+    }
+
+    async function executeDelete() {
+      if (!_deleteTarget) return;
+
+      const btn = document.getElementById('confirm-delete-btn');
+      btn.disabled = true;
+      btn.innerHTML = `<svg class="animate-spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Deleting…`;
+
+      let res;
+      if (_deleteTarget.mode === 'single') {
+        res = await VertexApp.adminDeleteUser(_deleteTarget.userId);
+      } else {
+        res = await VertexApp.adminBulkDeleteUsers(_deleteTarget.userIds);
+      }
+
+      btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg> Permanently Delete`;
+
+      if (res && res.success) {
+        closeDeleteModal();
+        await initAdmin();
+      } else {
+        btn.disabled = false;
+        VertexApp.showToast(res ? res.message : 'Delete operation failed.', 'error');
+      }
+    }
+
+    function renderDeposits() {
+      const tbody = document.getElementById('admin-deposits-table-body');
+      tbody.innerHTML = '';
+      const deps = adminOverviewData.transactions.filter(t => t.type === 'deposit');
+
+      if (deps.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="py-8 text-center text-slate-400 dark:text-gray-500">No deposit records found in database.</td></tr>';
+        return;
+      }
+
+      deps.forEach(t => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/80 dark:hover:bg-gray-800/30 transition-colors';
+        const isPending = t.status === 'pending';
+
+        tr.innerHTML = `
+          <td class="py-4 px-6 text-slate-700 dark:text-gray-300 font-bold">${t.tx_ref}</td>
+          <td class="py-4 px-6 font-bold text-slate-900 dark:text-white">${t.user_name || 'Investor'}</td>
+          <td class="py-4 px-6 text-slate-600 dark:text-gray-300">${t.asset}</td>
+          <td class="py-4 px-6 font-bold text-emerald-600 dark:text-emerald-400">+$${parseFloat(t.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+          <td class="py-4 px-6 text-slate-400 dark:text-gray-400 truncate max-w-xs">${t.tx_hash || 'TX-PENDING'}</td>
+          <td class="py-4 px-6">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${isPending ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30' : t.status === 'completed' ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30' : 'bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30'} uppercase">${t.status}</span>
+          </td>
+          <td class="py-4 px-6 text-center space-x-1 whitespace-nowrap">
+            ${isPending ? `
+              <button onclick="approveDeposit('${t.tx_ref}')" class="px-3 py-1 bg-emerald-500/15 dark:bg-emerald-500/20 hover:bg-emerald-500/25 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 rounded-lg text-xs font-bold transition-all">Approve & Credit</button>
+              <button onclick="rejectDeposit('${t.tx_ref}')" class="px-3 py-1 bg-rose-500/15 dark:bg-rose-500/20 hover:bg-rose-500/25 text-rose-600 dark:text-rose-400 border border-rose-500/30 rounded-lg text-xs font-bold transition-all">Decline</button>
+            ` : `<span class="text-slate-400 dark:text-gray-500 text-xs">${t.status}</span>`}
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderWithdrawals() {
+      const tbody = document.getElementById('admin-withdrawals-table-body');
+      tbody.innerHTML = '';
+      const wds = adminOverviewData.transactions.filter(t => t.type === 'withdrawal');
+
+      if (wds.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="py-8 text-center text-slate-400 dark:text-gray-500">No withdrawal requests recorded.</td></tr>';
+        return;
+      }
+
+      wds.forEach(t => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/80 dark:hover:bg-gray-800/30 transition-colors';
+        const isPending = t.status === 'pending';
+
+        tr.innerHTML = `
+          <td class="py-4 px-6 text-slate-700 dark:text-gray-300 font-bold">${t.tx_ref}</td>
+          <td class="py-4 px-6 font-bold text-slate-900 dark:text-white">${t.user_name || 'Investor'}</td>
+          <td class="py-4 px-6 text-slate-600 dark:text-gray-300">${t.asset}</td>
+          <td class="py-4 px-6 font-bold text-rose-600 dark:text-rose-400">-$${parseFloat(t.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+          <td class="py-4 px-6 text-slate-400 dark:text-gray-400 truncate max-w-xs">${t.destination_address || 'External Wallet'}</td>
+          <td class="py-4 px-6">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${isPending ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30' : t.status === 'completed' ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30' : 'bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30'} uppercase">${t.status}</span>
+          </td>
+          <td class="py-4 px-6 text-center space-x-1 whitespace-nowrap">
+            ${isPending ? `
+              <button onclick="approveWithdrawal('${t.tx_ref}')" class="px-3 py-1 bg-emerald-500/15 dark:bg-emerald-500/20 hover:bg-emerald-500/25 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 rounded-lg text-xs font-bold transition-all">Dispatch Payout</button>
+              <button onclick="rejectWithdrawal('${t.tx_ref}')" class="px-3 py-1 bg-rose-500/15 dark:bg-rose-500/20 hover:bg-rose-500/25 text-rose-600 dark:text-rose-400 border border-rose-500/30 rounded-lg text-xs font-bold transition-all">Decline & Refund</button>
+            ` : `<span class="text-slate-400 dark:text-gray-500 text-xs">${t.status}</span>`}
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderOTCPlans() {
+      const tbody = document.getElementById('admin-otc-plans-table-body');
+      tbody.innerHTML = '';
+      const plans = adminOverviewData.otcPlans || [];
+
+      if (plans.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" class="py-8 text-center text-slate-400 dark:text-gray-500">No active OTC contracts in system. Click "+ Allocate OTC Contract" to assign one.</td></tr>';
+        return;
+      }
+
+      plans.forEach(p => {
+        const u = adminOverviewData.users.find(user => user.id === p.user_id) || { full_name: 'Investor #' + p.user_id };
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/80 dark:hover:bg-gray-800/30 transition-colors';
+
+        const totalDays = p.duration_days || 30;
+        const daysElapsed = p.days_elapsed || 1;
+        const percent = Math.min(100, Math.round((daysElapsed / totalDays) * 100));
+
+        tr.innerHTML = `
+          <td class="py-4 px-6 text-slate-700 dark:text-gray-300 font-bold">#OTC-${p.id.toString().slice(-6)}</td>
+          <td class="py-4 px-6 font-bold text-slate-900 dark:text-white">${u.full_name}</td>
+          <td class="py-4 px-6 font-semibold text-amber-600 dark:text-amber-400">${p.tranche_name || 'Executive Multi-Asset'}</td>
+          <td class="py-4 px-6 font-bold text-slate-900 dark:text-white">$${parseFloat(p.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+          <td class="py-4 px-6 font-bold text-emerald-600 dark:text-emerald-400">+${parseFloat(p.weekly_roi_percent || 7.5).toFixed(2)}% / wk</td>
+          <td class="py-4 px-6">
+            <div class="flex items-center gap-2">
+              <div class="w-24 bg-slate-200 dark:bg-gray-900 h-2 rounded-full overflow-hidden border border-slate-300 dark:border-gray-800">
+                <div class="bg-emerald-500 h-full rounded-full" style="width: ${percent}%;"></div>
+              </div>
+              <span class="text-[10px] text-slate-500 dark:text-gray-400">Day ${daysElapsed}/${totalDays}</span>
+            </div>
+          </td>
+          <td class="py-4 px-6">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold ${p.status === 'active' ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30' : 'bg-slate-100 dark:bg-gray-800 text-slate-500 dark:text-gray-400 border border-slate-200 dark:border-gray-700'} uppercase">${p.status}</span>
+          </td>
+          <td class="py-4 px-6 text-center space-x-1 whitespace-nowrap">
+            ${p.status === 'active' ? `
+              <button onclick="terminateOTCPlan(${p.id})" class="px-2.5 py-1 bg-amber-500/15 dark:bg-amber-500/20 hover:bg-amber-500/25 text-amber-600 dark:text-amber-400 border border-amber-500/30 rounded-lg text-xs font-bold transition-all">Settle Early</button>
+            ` : ''}
+            <button onclick="deleteOTCPlan(${p.id})" class="px-2 py-1 bg-rose-500/15 dark:bg-rose-500/20 hover:bg-rose-500/25 text-rose-600 dark:text-rose-400 border border-rose-500/30 rounded-lg text-xs font-bold transition-all">✕</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderWallets() {
+      const grid = document.getElementById('admin-wallets-grid');
+      grid.innerHTML = '';
+
+      adminOverviewData.companyWallets.forEach(w => {
+        const card = document.createElement('div');
+        card.className = 'bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 p-5 rounded-3xl space-y-4 shadow-md dark:shadow-xl';
+        card.innerHTML = `
+          <div class="flex items-center gap-3">
+            <img src="${w.qr_url}" alt="QR" class="w-16 h-16 bg-white p-1 rounded-xl shadow-md border border-slate-100 dark:border-none">
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-center">
+                <h4 class="font-bold text-slate-900 dark:text-white text-sm truncate">${w.name}</h4>
+                <span class="text-xs text-amber-600 dark:text-amber-400 font-bold ">${w.symbol}</span>
+              </div>
+              <p class="text-[11px] text-slate-500 dark:text-gray-400">${w.network}</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[9px] font-bold ${w.is_active ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400' : 'bg-slate-100 dark:bg-gray-800 text-slate-500 dark:text-gray-400'} uppercase">${w.is_active ? 'Active' : 'Inactive'}</span>
+            </div>
+          </div>
+          <p class="text-[10px] text-slate-700 dark:text-gray-300 break-all p-2.5 bg-slate-50 dark:bg-[#101726] rounded-xl border border-slate-200 dark:border-gray-800/80">${w.address}</p>
+          <div class="flex justify-end gap-2 pt-1 border-t border-slate-100 dark:border-gray-800/60">
+            <button onclick="openWalletModal('${escapeQuote(w.symbol)}', '${escapeQuote(w.name)}', '${escapeQuote(w.network)}', '${escapeQuote(w.address)}', ${w.is_active})" class="px-3 py-1 bg-blue-500/10 dark:bg-blue-500/15 text-primary dark:text-blue-400 hover:bg-blue-500/20 rounded-lg text-xs font-bold transition-all">Edit</button>
+            <button onclick="deleteCompanyWallet('${w.symbol}')" class="px-3 py-1 bg-rose-500/10 dark:bg-rose-500/15 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20 rounded-lg text-xs font-bold transition-all">Delete</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderMasterLedger() {
+      const tbody = document.getElementById('admin-ledger-table-body');
+      tbody.innerHTML = '';
+      const txs = adminOverviewData.transactions || [];
+
+      if (txs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" class="py-8 text-center text-slate-400 dark:text-gray-500">No transactions recorded in ledger.</td></tr>';
+        return;
+      }
+
+      txs.forEach(t => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/80 dark:hover:bg-gray-800/30 transition-colors';
+        const isCredit = t.type === 'deposit' || t.type === 'otc_profit';
+
+        tr.innerHTML = `
+          <td class="py-3 px-6 text-slate-700 dark:text-gray-300 font-bold">${t.tx_ref}</td>
+          <td class="py-3 px-6 font-bold text-slate-900 dark:text-white">${t.user_name || 'User #' + t.user_id}</td>
+          <td class="py-3 px-6 uppercase text-[10px] font-extrabold text-amber-600 dark:text-amber-400">${t.type}</td>
+          <td class="py-3 px-6 text-slate-600 dark:text-gray-300">${t.asset || 'USD'}</td>
+          <td class="py-3 px-6 font-bold ${isCredit ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}">${isCredit ? '+' : '-'}$${parseFloat(t.amount).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+          <td class="py-3 px-6"><span class="px-2 py-0.5 rounded-full text-[9px] font-bold ${t.status === 'completed' ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400' : 'bg-amber-500/15 text-amber-600 dark:text-amber-400'} uppercase">${t.status}</span></td>
+          <td class="py-3 px-6 text-slate-400 dark:text-gray-400 text-[11px]">${new Date(t.created_at).toLocaleDateString()}</td>
+          <td class="py-3 px-6 text-center">
+            <button onclick="deleteTransaction('${t.tx_ref}')" class="px-2 py-1 bg-rose-500/10 dark:bg-rose-500/15 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20 rounded-lg text-xs font-bold transition-all">✕</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderEmailLogs() {
+      const tbody = document.getElementById('admin-email-logs-body');
+      tbody.innerHTML = '';
+      if (!adminOverviewData.emailLogs || adminOverviewData.emailLogs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="py-6 text-center text-slate-400 dark:text-gray-500">No dispatched emails logged yet.</td></tr>';
+        return;
+      }
+
+      adminOverviewData.emailLogs.forEach(log => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/80 dark:hover:bg-gray-800/30 transition-colors';
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-bold text-slate-800 dark:text-gray-200">${log.recipient_email}</td>
+          <td class="py-3 px-4 text-amber-600 dark:text-amber-400 font-medium">${log.subject}</td>
+          <td class="py-3 px-4 uppercase text-[10px] font-bold text-slate-500 dark:text-gray-400">${log.event_type}</td>
+          <td class="py-3 px-4 text-right text-slate-400 dark:text-gray-400 ">${new Date(log.sent_at).toLocaleTimeString()}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function populateUserDropdowns() {
+      const users = adminOverviewData.users.filter(u => u.role !== 'admin');
+      const otcSelect = document.getElementById('otc-target-user');
+      const txSelect = document.getElementById('manual-tx-user');
+
+      if (otcSelect) {
+        otcSelect.innerHTML = users.map(u => `<option value="${u.id}">${u.full_name} (${u.email})</option>`).join('');
+      }
+      if (txSelect) {
+        txSelect.innerHTML = users.map(u => `<option value="${u.id}">${u.full_name} (${u.email})</option>`).join('');
+      }
+    }
+
+    function switchAdminTab(tab) {
+      ['users', 'deposits', 'withdrawals', 'otc-plans', 'wallets', 'ledger', 'emails'].forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const sec = document.getElementById(`tab-content-${t}`);
+        if (t === tab) {
+          btn.className = 'px-4 py-2.5 rounded-2xl text-xs font-bold transition-all bg-primary text-white flex items-center gap-1.5 shadow-md shadow-primary/20';
+          sec.classList.remove('hidden');
+        } else {
+          btn.className = 'px-4 py-2.5 rounded-2xl text-xs font-bold transition-all bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 shadow-sm';
+          sec.classList.add('hidden');
+        }
+      });
+    }
+
+    function filterUsersTable() {
+      const query = document.getElementById('user-search-input').value.toLowerCase();
+      const rows = document.getElementById('admin-users-table-body').getElementsByTagName('tr');
+      for (let r of rows) {
+        r.style.display = r.innerText.toLowerCase().includes(query) ? '' : 'none';
+      }
+    }
+
+    function escapeQuote(str) {
+      return (str || '').replace(/'/g, "\\'");
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    function openCreateUserModal() {
+      document.getElementById('create-user-modal').classList.remove('hidden');
+    }
+
+    async function handleCreateUserSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('new-user-name').value;
+      const email = document.getElementById('new-user-email').value;
+      const pass = document.getElementById('new-user-password').value;
+      const country = document.getElementById('new-user-country').value;
+      const ex = document.getElementById('new-user-exchange').value;
+      const otc = document.getElementById('new-user-otc').value;
+      const kyc = document.getElementById('new-user-kyc').value;
+      const role = document.getElementById('new-user-role').value;
+
+      const res = await VertexApp.adminCreateUser({
+        full_name: name,
+        email,
+        password: pass,
+        country,
+        initial_exchange: ex,
+        initial_otc: otc,
+        kyc_status: kyc,
+        role
+      });
+
+      if (res.success) {
+        closeModal('create-user-modal');
+        await initAdmin();
+      }
+    }
+
+    function openEditUserModal(id, name, email, country, kyc, status) {
+      document.getElementById('edit-profile-user-id').value = id;
+      document.getElementById('edit-profile-name').value = name;
+      document.getElementById('edit-profile-email').value = email;
+      document.getElementById('edit-profile-country').value = country || 'United States';
+      document.getElementById('edit-profile-kyc').value = kyc || 'verified';
+      document.getElementById('edit-profile-status').value = status || 'active';
+      document.getElementById('edit-user-modal').classList.remove('hidden');
+    }
+
+    async function handleUpdateUserSubmit(e) {
+      e.preventDefault();
+      const id = document.getElementById('edit-profile-user-id').value;
+      const name = document.getElementById('edit-profile-name').value;
+      const email = document.getElementById('edit-profile-email').value;
+      const country = document.getElementById('edit-profile-country').value;
+      const kyc = document.getElementById('edit-profile-kyc').value;
+      const status = document.getElementById('edit-profile-status').value;
+
+      const res = await VertexApp.adminUpdateUser({
+        user_id: id,
+        full_name: name,
+        email,
+        country,
+        kyc_status: kyc,
+        status
+      });
+
+      if (res.success) {
+        closeModal('edit-user-modal');
+        await initAdmin();
+      }
+    }
+
+    function openBalanceModal(userId, name, ex, otc, profit) {
+      document.getElementById('edit-user-id').value = userId;
+      document.getElementById('edit-user-name').value = name;
+      document.getElementById('edit-exchange-balance').value = ex !== undefined ? ex : 0;
+      document.getElementById('edit-otc-balance').value = otc !== undefined ? otc : 0;
+      document.getElementById('edit-profit-balance').value = profit !== undefined ? profit : 0;
+      document.getElementById('balance-modal').classList.remove('hidden');
+    }
+
+    async function saveUserBalances() {
+      const id = document.getElementById('edit-user-id').value;
+      const ex = document.getElementById('edit-exchange-balance').value;
+      const otc = document.getElementById('edit-otc-balance').value;
+      const profit = document.getElementById('edit-profit-balance').value;
+
+      const res = await VertexApp.adminUpdateUserBalance(id, ex, otc, profit);
+      if (res && res.success) {
+        closeModal('balance-modal');
+        await initAdmin();
+      } else {
+        VertexApp.showToast(res && res.message ? res.message : 'Failed to update balances.', 'error');
+      }
+    }
+
+    function openCreditProfitModal(userId, name, otcBalance) {
+      document.getElementById('profit-user-id').value = userId;
+      document.getElementById('profit-user-name').value = name;
+      document.getElementById('profit-active-otc').innerText = '$' + parseFloat(otcBalance || 0).toLocaleString(undefined, { minimumFractionDigits: 2 });
+      
+      const defaultWeekly = (parseFloat(otcBalance || 0) * 0.075);
+      document.getElementById('profit-credit-amount').value = defaultWeekly > 0 ? defaultWeekly.toFixed(2) : '375.00';
+      document.getElementById('credit-profit-modal').classList.remove('hidden');
+    }
+
+    async function submitCreditProfit() {
+      const id = document.getElementById('profit-user-id').value;
+      const profit = document.getElementById('profit-credit-amount').value;
+      const note = document.getElementById('profit-credit-note').value;
+      const btn = document.getElementById('btn-submit-profit');
+
+      if (!profit || parseFloat(profit) <= 0) {
+        VertexApp.showToast('Please enter a valid profit amount.', 'error');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = 'Crediting Profit & Dispatching Email...';
+
+      const res = await VertexApp.adminCreditProfit(id, profit, note);
+      btn.disabled = false;
+      btn.innerText = 'Credit Profit & Dispatch Resend Email';
+
+      if (res.success) {
+        closeModal('credit-profit-modal');
+        await initAdmin();
+      }
+    }
+
+    async function approveDeposit(txRef) {
+      await VertexApp.adminApproveDeposit(txRef);
+      await initAdmin();
+    }
+
+    async function rejectDeposit(txRef) {
+      const reason = prompt('Reason for declining deposit:', 'Transaction hash unverified on-chain.');
+      if (reason === null) return;
+      await VertexApp.adminRejectDeposit(txRef, reason);
+      await initAdmin();
+    }
+
+    async function approveWithdrawal(txRef) {
+      const txHash = prompt('Enter Blockchain TXID Hash (or press OK for default):', '0x' + Math.random().toString(36).substring(2, 14));
+      if (txHash === null) return;
+      await VertexApp.adminApproveWithdrawal(txRef, txHash);
+      await initAdmin();
+    }
+
+    async function rejectWithdrawal(txRef) {
+      const reason = prompt('Reason for declining payout:', 'Security compliance verification required.');
+      if (reason === null) return;
+      await VertexApp.adminRejectWithdrawal(txRef, reason);
+      await initAdmin();
+    }
+
+    function openCreateOTCPlanModal() {
+      document.getElementById('create-otc-modal').classList.remove('hidden');
+    }
+
+    function updateTrancheFormDefaults(tranche) {
+      if (tranche.includes('Starter')) {
+        document.getElementById('otc-target-amount').value = 1000;
+        document.getElementById('otc-target-roi').value = 5.0;
+        document.getElementById('otc-target-duration').value = 30;
+      } else if (tranche.includes('Prime')) {
+        document.getElementById('otc-target-amount').value = 50000;
+        document.getElementById('otc-target-roi').value = 10.0;
+        document.getElementById('otc-target-duration').value = 60;
+      } else {
+        document.getElementById('otc-target-amount').value = 5000;
+        document.getElementById('otc-target-roi').value = 7.5;
+        document.getElementById('otc-target-duration').value = 30;
+      }
+    }
+
+    async function handleCreateOTCPlanSubmit(e) {
+      e.preventDefault();
+      const userId = document.getElementById('otc-target-user').value;
+      const tranche = document.getElementById('otc-target-tranche').value;
+      const amount = document.getElementById('otc-target-amount').value;
+      const roi = document.getElementById('otc-target-roi').value;
+      const duration = document.getElementById('otc-target-duration').value;
+
+      const res = await VertexApp.adminCreateOTCPlan({
+        user_id: userId,
+        tranche_name: tranche,
+        amount,
+        weekly_roi_percent: roi,
+        duration_days: duration
+      });
+
+      if (res.success) {
+        closeModal('create-otc-modal');
+        await initAdmin();
+      }
+    }
+
+    async function terminateOTCPlan(id) {
+      if (!confirm('Settle this OTC contract early and refund principal to investor Exchange Wallet?')) return;
+      const res = await VertexApp.adminTerminateOTCPlan(id);
+      if (res.success) await initAdmin();
+    }
+
+    async function deleteOTCPlan(id) {
+      if (!confirm('Delete this OTC contract record?')) return;
+      const res = await VertexApp.adminDeleteOTCPlan(id);
+      if (res.success) await initAdmin();
+    }
+
+    function openWalletModal(sym = '', name = '', net = '', addr = '', active = 1) {
+      document.getElementById('wallet-orig-symbol').value = sym || '';
+      const symInput = document.getElementById('wallet-symbol');
+      symInput.value = sym || '';
+      document.getElementById('wallet-name').value = name || '';
+      document.getElementById('wallet-network').value = net || '';
+      document.getElementById('wallet-address').value = addr || '';
+      document.getElementById('wallet-is-active').checked = active !== 0 && active !== false && active !== '0';
+      
+      if (sym) {
+        symInput.readOnly = true;
+        symInput.classList.add('opacity-70', 'cursor-not-allowed');
+        document.getElementById('wallet-modal-title').innerText = `Edit Custody Wallet (${sym})`;
+      } else {
+        symInput.readOnly = false;
+        symInput.classList.remove('opacity-70', 'cursor-not-allowed');
+        document.getElementById('wallet-modal-title').innerText = 'Add Official Deposit Custody Wallet';
+      }
+      
+      document.getElementById('wallet-modal').classList.remove('hidden');
+    }
+
+    async function handleSaveWalletSubmit(e) {
+      e.preventDefault();
+      const origSym = document.getElementById('wallet-orig-symbol').value;
+      const sym = (document.getElementById('wallet-symbol').value || origSym || '').trim();
+      const name = (document.getElementById('wallet-name').value || '').trim();
+      const net = (document.getElementById('wallet-network').value || '').trim();
+      const addr = (document.getElementById('wallet-address').value || '').trim();
+      const isActive = document.getElementById('wallet-is-active').checked ? 1 : 0;
+      const btn = document.getElementById('btn-wallet-save');
+
+      if (!sym) {
+        VertexApp.showToast('Please enter an asset symbol (e.g. BTC, ETH, USDT_TRC20).', 'error');
+        return;
+      }
+      if (!name) {
+        VertexApp.showToast('Please enter a display asset name.', 'error');
+        return;
+      }
+      if (!addr) {
+        VertexApp.showToast('Please paste the deposit receiving address.', 'error');
+        return;
+      }
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `<span>Saving Custody Wallet...</span>`;
+      }
+
+      try {
+        const res = await VertexApp.adminSaveCompanyWallet(sym, name, net, addr, isActive);
+        if (res && res.success) {
+          closeModal('wallet-modal');
+          await initAdmin();
+        }
+      } catch (err) {
+        VertexApp.showToast('Error saving wallet: ' + err.message, 'error');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = `<span>Save Custody Wallet</span>`;
+        }
+      }
+    }
+
+    async function deleteCompanyWallet(sym) {
+      if (!confirm(`Remove custody wallet for ${sym}?`)) return;
+      const res = await VertexApp.adminDeleteCompanyWallet(sym);
+      if (res && res.success) await initAdmin();
+    }
+
+    function openManualTxModal(defaultType = 'deposit') {
+      document.getElementById('manual-tx-type').value = defaultType;
+      document.getElementById('manual-tx-modal').classList.remove('hidden');
+    }
+
+    async function handleManualTxSubmit(e) {
+      e.preventDefault();
+      const userId = document.getElementById('manual-tx-user').value;
+      const type = document.getElementById('manual-tx-type').value;
+      const amount = document.getElementById('manual-tx-amount').value;
+      const asset = document.getElementById('manual-tx-asset').value;
+      const note = document.getElementById('manual-tx-note').value;
+
+      const res = await VertexApp.adminCreateTransaction({
+        user_id: userId,
+        type,
+        amount,
+        asset,
+        notes: note,
+        status: 'completed'
+      });
+
+      if (res.success) {
+        closeModal('manual-tx-modal');
+        await initAdmin();
+      }
+    }
+
+    async function deleteTransaction(ref) {
+      if (!confirm(`Delete ledger transaction record #${ref}?`)) return;
+      const res = await VertexApp.adminDeleteTransaction(ref);
+      if (res.success) await initAdmin();
+    }
+
+    function toggleBroadcastCheckbox(cb) {
+      const rec = document.getElementById('email-recipient');
+      if (cb.checked) {
+        rec.value = 'ALL_USERS';
+        rec.disabled = true;
+      } else {
+        rec.value = '';
+        rec.disabled = false;
+      }
+    }
+
+    async function handleSendEmail(e) {
+      e.preventDefault();
+      const rec = document.getElementById('email-recipient').value;
+      const sub = document.getElementById('email-subject').value;
+      const body = document.getElementById('email-body').value;
+      const broadcast = document.getElementById('email-broadcast').checked;
+      const btn = document.getElementById('btn-broadcast-submit');
+
+      const targetEmail = broadcast ? 'ALL_USERS' : rec;
+      if (!targetEmail) {
+        VertexApp.showToast('Please enter an email address or check Broadcast.', 'error');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = `<span>Dispatching via Resend...</span>`;
+
+      const res = await VertexApp.adminSendEmail(targetEmail, sub, body);
+      btn.disabled = false;
+      btn.innerHTML = `<span>Dispatch Live Email via Resend</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
+
+      if (res.success) {
+        document.getElementById('email-recipient').value = '';
+        document.getElementById('email-subject').value = '';
+        document.getElementById('email-body').value = '';
+        document.getElementById('email-broadcast').checked = false;
+        document.getElementById('email-recipient').disabled = false;
+        await initAdmin();
+      }
+    }
+
+    async function clearEmailLogs() {
+      if (!confirm('Clear all dispatched email audit logs?')) return;
+      const res = await VertexApp.adminClearEmailLogs();
+      if (res.success) await initAdmin();
+    }
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      const authenticated = await checkAdminAuth();
+      if (authenticated) {
+        await initAdmin();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="80" viewBox="0 0 320 80" fill="none">
+  <defs>
+    <linearGradient id="fBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#183EFA" />
+    </linearGradient>
+    <linearGradient id="fWhite" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#93C5FD" />
+    </linearGradient>
+    <filter id="fglow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#3B82F6" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Vertex Apex Icon (White / Glowing Blue) -->
+  <g transform="translate(8, 14)" filter="url(#fglow)">
+    <path d="M4 6 L20 38 L26 38 L12 6 Z" fill="url(#fBlue)" />
+    <path d="M38 6 L22 38 L28 38 L43 6 Z" fill="url(#fWhite)" />
+    <polygon points="21,1 25,7 18,7" fill="#60A5FA" />
+  </g>
+
+  <!-- Typography -->
+  <text x="62" y="42" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="800" letter-spacing="-0.5" fill="#FFFFFF">VERTEX</text>
+  <text x="176" y="42" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="700" letter-spacing="-0.5" fill="#3B82F6">CAPITALS</text>
+  <text x="63" y="60" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" letter-spacing="2" fill="#94A3B8">PREMIUM FINANCIAL SERVICES</text>
+</svg>

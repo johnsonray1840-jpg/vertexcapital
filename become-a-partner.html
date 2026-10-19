@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VertexCapitals - Partner Program</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/d2685dbffe5d4b04.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0284C7',
+            dark: '#0B1120',
+            cardBg: '#0F172A',
+            cardBorder: '#1E293B'
+          }
+        }
+      }
+    }
+  </script>
+  <script src="js/nav-fix.js"></script>
+  <script src="js/app-store.js"></script>
+</head>
+<body class="bg-[#070a11] text-gray-100 min-h-screen flex flex-col font-sans antialiased">
+  
+  <!-- Header -->
+  <header class="bg-[#0c121e]/90 backdrop-blur-md border-b border-gray-800/80 px-6 py-4 flex justify-between items-center sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <button onclick="VertexApp.toggleSideNav()" class="w-9 h-9 rounded-xl bg-[#101726] border border-gray-800 hover:border-amber-500/50 flex items-center justify-center text-gray-300 hover:text-amber-400 transition-all shadow-md" title="Toggle Navigation">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <a href="dashboard.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <span class="text-sm font-semibold">Dashboard</span>
+      </a>
+    </div>
+    <a href="index.html">
+      <img src="images/navbarlogo.svg" alt="VertexCapitals Logo" class="h-7 brightness-200">
+    </a>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+    <div class="bg-gradient-to-r from-blue-900 to-indigo-950 p-6 sm:p-8 rounded-3xl border border-blue-500/20 shadow-2xl flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30">VIP AFFILIATE PROGRAM</span>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white">Earn 5% Instant Commission</h1>
+        <p class="text-xs sm:text-sm text-gray-300 max-w-xl">Invite fellow institutional and retail investors to VertexCapitals. Earn 5.00% recurring commission on all OTC capital allocations made by your network.</p>
+      </div>
+      <button onclick="copyPartnerLink()" class="px-6 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-extrabold text-xs rounded-2xl shadow-xl shadow-amber-500/25 whitespace-nowrap transition-all">
+        <span id="partner-btn-text">📋 Copy My Referral Link</span>
+      </button>
+    </div>
+
+    <!-- Referral Metrics -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="bg-gray-900 border border-gray-800 p-6 rounded-3xl">
+        <p class="text-xs text-gray-400 uppercase font-semibold">Referred Investors</p>
+        <h3 class="text-3xl font-extrabold text-white mt-1">12 Active</h3>
+        <p class="text-[11px] text-emerald-400 mt-1">● Tier-1 Partners</p>
+      </div>
+
+      <div class="bg-gray-900 border border-gray-800 p-6 rounded-3xl">
+        <p class="text-xs text-gray-400 uppercase font-semibold">Total Referred Capital</p>
+        <h3 class="text-3xl font-extrabold text-primary mt-1">$148,500.00</h3>
+        <p class="text-[11px] text-blue-400 mt-1">Allocated to OTC Pools</p>
+      </div>
+
+      <div class="bg-gray-900 border border-gray-800 p-6 rounded-3xl">
+        <p class="text-xs text-gray-400 uppercase font-semibold">5% Commissions Earned</p>
+        <h3 class="text-3xl font-extrabold text-amber-400 mt-1">+$7,425.00</h3>
+        <p class="text-[11px] text-amber-500 mt-1">Auto-credited to Exchange Wallet</p>
+      </div>
+    </div>
+
+    <!-- Referral Link Box -->
+    <div class="bg-gray-900 border border-gray-800 p-6 rounded-3xl space-y-3">
+      <h3 class="text-sm font-bold text-white">Your Unique Referral Link</h3>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input type="text" id="partner-link-input" readonly value="https://vertexcapitals.ltd/register.html?ref=VX-8776" class="flex-1 bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-xs text-gray-300 font-semibold select-all">
+        <button onclick="copyPartnerLink()" class="px-6 py-3 bg-primary hover:bg-blue-600 text-white font-bold text-xs rounded-xl shadow-lg transition-all">
+          Copy Link
+        </button>
+      </div>
+    </div>
+
+    <!-- Referred Investors Table -->
+    <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 space-y-4">
+      <h3 class="text-md font-bold text-white">Referred Network Directory</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead>
+            <tr class="text-gray-400 border-b border-gray-800 uppercase tracking-wider">
+              <th class="pb-3">Investor</th>
+              <th class="pb-3">Country</th>
+              <th class="pb-3">OTC Investment</th>
+              <th class="pb-3">Commission Earned (5%)</th>
+              <th class="pb-3 text-right">Join Date</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-800/60 font-medium">
+            <tr class="hover:bg-gray-800/40 transition-colors">
+              <td class="py-3 font-bold text-white">Elena Rostova</td>
+              <td class="py-3 text-gray-300">Germany</td>
+              <td class="py-3 text-primary font-bold">$50,000.00</td>
+              <td class="py-3 text-emerald-400 font-bold">+$2,500.00</td>
+              <td class="py-3 text-right text-gray-400">Sep 10, 2026</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 transition-colors">
+              <td class="py-3 font-bold text-white">Kenji Takahashi</td>
+              <td class="py-3 text-gray-300">Japan</td>
+              <td class="py-3 text-primary font-bold">$75,000.00</td>
+              <td class="py-3 text-emerald-400 font-bold">+$3,750.00</td>
+              <td class="py-3 text-right text-gray-400">Sep 08, 2026</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 transition-colors">
+              <td class="py-3 font-bold text-white">David Reynolds</td>
+              <td class="py-3 text-gray-300">United States</td>
+              <td class="py-3 text-primary font-bold">$23,500.00</td>
+              <td class="py-3 text-emerald-400 font-bold">+$1,175.00</td>
+              <td class="py-3 text-right text-gray-400">Sep 04, 2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function initPartner() {
+      const user = VertexApp.currentUser || VertexApp.state.users[1];
+      const link = `https://vertexcapitals.ltd/register.html?ref=${user.referral_code || 'VX-8776'}`;
+      document.getElementById('partner-link-input').value = link;
+    }
+
+    function copyPartnerLink() {
+      const link = document.getElementById('partner-link-input').value;
+      navigator.clipboard.writeText(link);
+      const btn = document.getElementById('partner-btn-text');
+      if (btn) btn.innerText = '✅ Link Copied to Clipboard!';
+      setTimeout(() => {
+        if (btn) btn.innerText = '📋 Copy My Referral Link';
+      }, 2500);
+      VertexApp.showToast('Referral link copied to clipboard!', 'success');
+    }
+
+    window.addEventListener('DOMContentLoaded', initPartner);
+  </script>
+</body>
+</html>

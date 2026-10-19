@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>
+    (function() {
+      try {
+        const theme = localStorage.getItem('vertexcapitals_theme');
+        if (theme === 'light') document.documentElement.classList.remove('dark');
+        else document.documentElement.classList.add('dark');
+      } catch(e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VertexCapitals - Withdraw Funds</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/d2685dbffe5d4b04.css">
+  <link rel="stylesheet" href="css/theme-engine.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#183EFA',
+            gold: '#F59E0B',
+            dark: '#070A11',
+            cardBg: '#0C121E',
+            cardBorder: '#1E293B'
+          }
+        }
+      }
+    }
+  </script>
+  <script src="js/nav-fix.js"></script>
+  <script src="js/app-store.js"></script>
+</head>
+<body class="bg-slate-50 dark:bg-[#070a11] text-slate-800 dark:text-gray-100 min-h-screen flex flex-col font-sans antialiased selection:bg-primary selection:text-white">
+  
+  <!-- Header -->
+  <header class="bg-white/90 dark:bg-[#0c121e]/90 backdrop-blur-md border-b border-slate-200 dark:border-gray-800/80 px-6 py-4 flex justify-between items-center sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <button onclick="VertexApp.toggleSideNav()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 hover:border-primary/50 flex items-center justify-center text-slate-700 dark:text-gray-300 hover:text-primary transition-all shadow-sm" title="Toggle Navigation">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <a href="dashboard.html" class="flex items-center gap-2 text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        <span class="text-sm font-semibold">Dashboard</span>
+      </a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <!-- Theme Switcher Toggle Button -->
+      <button onclick="VertexApp.toggleTheme()" class="theme-toggle-btn" title="Toggle Theme (Light / Dark Mode)">
+        <!-- Sun icon (shown in Dark mode) -->
+        <svg class="sun-icon w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <!-- Moon icon (shown in Light mode) -->
+        <svg class="moon-icon w-4 h-4 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+
+      <a href="index.html">
+        <img src="images/navbarlogo.svg" alt="VertexCapitals Logo" class="h-7 brand-logo-adaptive">
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-2xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+    <div>
+      <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-primary/10 text-primary border border-primary/20 uppercase tracking-wider">Direct Liquidity Payout</span>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-2 tracking-tight">Request Crypto Withdrawal</h1>
+      <p class="text-xs sm:text-sm text-slate-500 dark:text-gray-400 mt-1">Withdraw your available liquid Exchange Wallet balance to your external cryptocurrency address.</p>
+    </div>
+
+    <!-- Balance Overview Pill -->
+    <div class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 p-6 rounded-3xl flex justify-between items-center shadow-md dark:shadow-xl">
+      <div>
+        <p class="text-[11px] text-slate-500 dark:text-gray-400 uppercase font-semibold tracking-wider">Available for Withdrawal (Exchange Balance)</p>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1" id="available-exchange-balance">$0.00</h2>
+      </div>
+      <a href="deposit.html" class="px-4 py-2 bg-slate-100 dark:bg-[#101726] hover:bg-slate-200 dark:hover:bg-gray-800 text-xs font-bold text-slate-700 dark:text-gray-200 border border-slate-200 dark:border-gray-800 rounded-xl transition-all flex items-center gap-1.5 shadow-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>Deposit</span>
+      </a>
+    </div>
+
+    <!-- Withdrawal Form -->
+    <form onsubmit="handleWithdrawalSubmit(event)" class="bg-white dark:bg-[#0c121e] border border-slate-200 dark:border-gray-800/80 rounded-3xl p-6 sm:p-8 space-y-6 shadow-md dark:shadow-2xl">
+      
+      <!-- Network Chain / Coin -->
+      <div class="space-y-2">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-400">Select Network / Asset Chain</label>
+        <select id="withdraw-asset" required class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-2xl px-4 py-3.5 text-slate-900 dark:text-white font-bold focus:outline-none focus:border-primary text-sm">
+          <option value="USDT (TRC20)">Tether USD (TRC20) - Low Fee / Instant</option>
+          <option value="Bitcoin (BTC)">Bitcoin (BTC)</option>
+          <option value="Ethereum (ERC20)">Ethereum (ERC20)</option>
+          <option value="USDT (ERC20)">Tether USD (ERC20)</option>
+          <option value="Solana (SOL)">Solana (SOL)</option>
+          <option value="BNB (BEP20)">BNB Smart Chain (BEP20)</option>
+        </select>
+      </div>
+
+      <!-- Recipient Destination Address -->
+      <div class="space-y-2">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-400">Destination Wallet Address</label>
+        <input type="text" id="withdraw-address" required placeholder="Enter external blockchain wallet address" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-2xl px-4 py-3.5 text-slate-900 dark:text-white text-xs focus:outline-none focus:border-primary">
+      </div>
+
+      <!-- Amount Entry -->
+      <div class="space-y-2">
+        <div class="flex justify-between items-center text-xs">
+          <label class="font-bold uppercase tracking-wider text-slate-600 dark:text-gray-400">Withdrawal Amount (USD)</label>
+          <button type="button" onclick="setMaxWithdrawal()" class="text-primary font-bold hover:underline">MAX AMOUNT</button>
+        </div>
+        <div class="relative">
+          <span class="absolute left-4 top-3.5 text-slate-400 dark:text-gray-400 font-bold">$</span>
+          <input type="number" id="withdraw-amount" required min="20" step="0.01" placeholder="1000" class="w-full bg-slate-50 dark:bg-[#101726] border border-slate-200 dark:border-gray-800 rounded-2xl pl-8 pr-4 py-3.5 text-slate-900 dark:text-white font-bold focus:outline-none focus:border-primary text-base ">
+        </div>
+      </div>
+
+      <!-- Security / Processing Note -->
+      <div class="bg-primary/10 border border-primary/20 rounded-2xl p-4 text-xs text-slate-700 dark:text-blue-200 space-y-1">
+        <p class="font-bold text-primary">Compliance & Treasury Verification</p>
+        <p class="text-slate-600 dark:text-gray-300">Withdrawals are processed from multi-signature cold storage vaults. Ensure your destination address matches the selected chain.</p>
+      </div>
+
+      <button type="submit" id="btn-withdraw-submit" class="w-full py-4 bg-primary hover:bg-[#1332c9] text-white font-extrabold text-sm rounded-2xl shadow-xl shadow-primary/20 transition-all flex items-center justify-center gap-2">
+        <span>Request Payout Dispatch</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </button>
+    </form>
+  </main>
+
+  <script>
+    let currentExchangeBalance = 0;
+
+    async function initWithdrawalPage() {
+      if (!VertexApp.currentUser) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const summary = await VertexApp.getSummary();
+      if (summary && summary.wallet) {
+        currentExchangeBalance = summary.wallet.exchange_balance || 0;
+      } else {
+        currentExchangeBalance = 0;
+      }
+
+      document.getElementById('available-exchange-balance').innerText = '$' + parseFloat(currentExchangeBalance).toLocaleString(undefined, { minimumFractionDigits: 2 });
+    }
+
+    function setMaxWithdrawal() {
+      document.getElementById('withdraw-amount').value = currentExchangeBalance;
+    }
+
+    async function handleWithdrawalSubmit(e) {
+      e.preventDefault();
+      const asset = document.getElementById('withdraw-asset').value;
+      const address = document.getElementById('withdraw-address').value;
+      const amount = parseFloat(document.getElementById('withdraw-amount').value);
+      const btn = document.getElementById('btn-withdraw-submit');
+
+      if (!amount || amount <= 0) {
+        VertexApp.showToast('Please enter a valid payout amount.', 'error');
+        return;
+      }
+
+      if (amount > currentExchangeBalance) {
+        VertexApp.showToast('Insufficient Exchange Wallet balance.', 'error');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = `<span>Processing Request...</span>`;
+
+      const res = await VertexApp.withdraw(asset, amount, address);
+      if (res.success) {
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 1200);
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = `<span>Request Payout Dispatch</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', initWithdrawalPage);
+  </script>
+</body>
+</html>

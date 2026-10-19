@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="56" viewBox="0 0 280 56" fill="none">
+  <defs>
+    <linearGradient id="vBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#183EFA" />
+    </linearGradient>
+    <linearGradient id="vDark" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E3A8A" />
+    </linearGradient>
+    <linearGradient id="vShine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#183EFA" flood-opacity="0.2" />
+    </filter>
+  </defs>
+  
+  <!-- Vertex Apex Icon -->
+  <g transform="translate(8, 8)" filter="url(#glow)">
+    <path d="M2 6 L18 36 L24 36 L10 6 Z" fill="url(#vBlue)" />
+    <path d="M34 6 L20 36 L25 36 L39 6 Z" fill="url(#vDark)" />
+    <path d="M10 6 L19 23 L24 23 L14 6 Z" fill="url(#vShine)" opacity="0.9" />
+    <polygon points="19,2 22,7 16,7" fill="#183EFA" />
+  </g>
+
+  <!-- Typography -->
+  <text x="56" y="34" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="800" letter-spacing="-0.5" fill="#0F172A">VERTEX</text>
+  <text x="152" y="34" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" letter-spacing="-0.5" fill="#183EFA">CAPITALS</text>
+</svg>
