@@ -196,8 +196,8 @@ function sendJSON(res, data, statusCode = 200) {
   res.end(JSON.stringify(data));
 }
 
-// Main HTTP Request Handler
-const server = http.createServer(async (req, res) => {
+// Main HTTP Request Handler Function
+async function requestHandler(req, res) {
   const parsedUrl = url.parse(req.url, true);
   const pathname = parsedUrl.pathname;
   const method = req.method;
@@ -1257,45 +1257,52 @@ const server = http.createServer(async (req, res) => {
       res.end(content);
     });
   });
-});
-
-// Start Server with complete CloudLinux / cPanel Passenger & Local Port support
-const rawPort = process.env.PORT;
-
-if (rawPort && isNaN(Number(rawPort))) {
-  // Binds directly to Passenger socket on cPanel
-  server.listen(rawPort, () => {
-    console.log(`====================================================`);
-    console.log(`🚀 VertexCapitals Platform Server is active via Passenger (${rawPort})!`);
-    console.log(`====================================================`);
-  });
-} else {
-  let port = parseInt(rawPort || '3000', 10);
-  if (isNaN(port) || port <= 0) port = 3000;
-
-  server.on('error', (err) => {
-    if (err.code === 'EADDRINUSE') {
-      port++;
-      console.warn(`[VertexCapitals Server] Port in use, trying next port ${port}...`);
-      setTimeout(() => server.listen(port), 100);
-    } else {
-      console.error('[VertexCapitals Server Error]', err);
-    }
-  });
-
-  server.listen(port, () => {
-    console.log(`====================================================`);
-    console.log(`🚀 VertexCapitals Platform Server is active!`);
-    console.log(`🌐 Local URL: http://localhost:${port}`);
-    console.log(`💳 User Dashboard: http://localhost:${port}/dashboard.html`);
-    console.log(`🛡️ Admin Portal: http://localhost:${port}/admin.html`);
-    console.log(`✉️ Email Service Engine: Ready with HTML Templates & SMTP Support`);
-    console.log(`====================================================`);
-  });
 }
 
-// Export server for Passenger direct mounting
-module.exports = server;
+// Create HTTP server instance
+const server = http.createServer(requestHandler);
+
+// Start Server with complete CloudLinux / cPanel Passenger & Local Port support
+// On Vercel serverless environment, VERCEL is defined so we don't call server.listen()
+if (!process.env.VERCEL) {
+  const rawPort = process.env.PORT;
+
+  if (rawPort && isNaN(Number(rawPort))) {
+    // Binds directly to Passenger socket on cPanel
+    server.listen(rawPort, () => {
+      console.log(`====================================================`);
+      console.log(`🚀 VertexCapitals Platform Server is active via Passenger (${rawPort})!`);
+      console.log(`====================================================`);
+    });
+  } else {
+    let port = parseInt(rawPort || '3000', 10);
+    if (isNaN(port) || port <= 0) port = 3000;
+
+    server.on('error', (err) => {
+      if (err.code === 'EADDRINUSE') {
+        port++;
+        console.warn(`[VertexCapitals Server] Port in use, trying next port ${port}...`);
+        setTimeout(() => server.listen(port), 100);
+      } else {
+        console.error('[VertexCapitals Server Error]', err);
+      }
+    });
+
+    server.listen(port, () => {
+      console.log(`====================================================`);
+      console.log(`🚀 VertexCapitals Platform Server is active!`);
+      console.log(`🌐 Local URL: http://localhost:${port}`);
+      console.log(`💳 User Dashboard: http://localhost:${port}/dashboard.html`);
+      console.log(`🛡️ Admin Portal: http://localhost:${port}/admin.html`);
+      console.log(`✉️ Email Service Engine: Ready with HTML Templates & SMTP Support`);
+      console.log(`====================================================`);
+    });
+  }
+}
+
+// Export for Passenger, standalone node, and Vercel Serverless Function
+module.exports = requestHandler;
+module.exports.server = server;
 
 // Initialize DB in background (non-blocking)
 db.initDB().catch(err => {
